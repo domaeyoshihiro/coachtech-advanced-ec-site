@@ -1,0 +1,115 @@
+@extends('layouts.default')
+
+@if (Auth::check())
+  @include('layouts.header4')
+@else
+  @include('layouts.header3')
+@endif
+
+@section('content')
+<div class="shop">
+  @foreach ($shops as $shop)
+  <div class="shop__container">
+    <div>
+      <img src="{{ $shop->image }}" class="shop__img" />
+    </div>
+    <div class="shop__content">
+      <div class="shop__name">{{ $shop->shopname }}</div>
+      <div class="tag">
+        <p class="shop__area--tag">#{{ $shop->area->area }}</p>
+        <p class="shop__genre--tag">#{{ $shop->genre->genre }}</p>
+      </div>
+      <div class="shop__btn__like">
+        <form action="/detail/{{ $shop->id }}" method="GET" class="shop__form">
+          @csrf
+          <button class="shop__btn">詳しくみる</button>
+        </form>
+
+        @if ($shop->likes.includes($user->id))
+        <form action="/like/add/{{ $shop->id }}" method="POST" class="">
+          @csrf
+          @if (Auth::check())
+            <input type="hidden" name="user_id" value="{{ $user->id  }}">
+          @else
+            <p class="login__error">ログインしてください。</p>
+          @endif
+          <input type="image" src="{{ asset('img/heart.png') }}" class="shop__like--img">
+        </form>
+        @else
+        <form action="/like/delete/{{ $shop->id }}" method="POST" class="">
+          @csrf
+          @if (Auth::check())
+            <input type="hidden" name="user_id" value="{{ $user->id  }}">
+          @else
+            <p class="login__error">ログインしてください。</p>
+          @endif
+          <input type="image" src="{{ asset('img/heart2.png') }}" class="shop__like--img">
+        </form>
+        @endif
+
+        
+      </div>
+    </div>
+  </div>
+  @endforeach
+</div>
+@endsection
+
+<style>
+.shop {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 30px 20px 30px 30px;
+}
+.shop__container {
+  width: 23%;
+  box-shadow: 2px 2px 1px #C0C0C0;
+  border-radius: 5px;
+  margin-right: 10px;
+  margin-bottom: 20px;
+}
+.shop__img {
+  width: 100%;
+  border-radius: 5px 5px 0 0;
+}
+.shop__content {
+  background-color: #FFFFFF;
+  border-radius: 0 0 5px 5px;
+}
+.shop__name {
+  font-size: 18px;
+  font-weight: bold;
+  padding: 30px 0 10px 20px;
+}
+.tag {
+  display: flex;
+  padding: 0 0 20px 20px;
+}
+.shop__area--tag {
+  font-size: 14px;
+  margin-right: 5px;
+}
+.shop__genre--tag {
+  font-size: 14px;
+}
+.shop__btn__like {
+  display: flex;
+  justify-content: space-between;
+}
+.shop__btn {
+  font-size: 16px;
+  color: 	#FFFFFF;
+  background-color: #0000FF;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 0 0 30px 20px;
+  cursor: pointer;
+}
+.shop__like--img {
+  width: 30px;
+  height: 30px;
+  margin-right: 15px;
+}
+</style>
