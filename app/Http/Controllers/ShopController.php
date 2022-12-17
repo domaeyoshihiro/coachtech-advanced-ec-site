@@ -11,7 +11,7 @@ class ShopController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $shops = Shop::with('area', 'genre','likes.user')->get();
+        $shops = Shop::with('area', 'genre','likes')->get();
 
         return view('shop', ['shops' => $shops, 'user' => $user]);
     }
@@ -23,6 +23,7 @@ class ShopController extends Controller
     }
     public function search(Request $request)
     {
+        $user = Auth::user();
         $query = Shop::query();
         $shopname = $request->input('shopname');
         $area_id = $request->input('area_id');
@@ -37,6 +38,6 @@ class ShopController extends Controller
             $query -> where('genre_id', $genre_id);
         }
         $shops = $query->get();
-        return view('shop', ['shops' => $shops]);
+        return view('shop', ['shops' => $shops, 'user' => $user]);
     }
 }

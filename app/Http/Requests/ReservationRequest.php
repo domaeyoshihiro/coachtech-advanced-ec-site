@@ -13,6 +13,7 @@ class ReservationRequest extends FormRequest
     public function rules()
     {
         return [
+            'user_id' => ['required'],
             'date' => ['required','date'],
             'time' => ['required','date_format:H:i'],
             'number' => ['required', 'string'],
@@ -21,6 +22,7 @@ class ReservationRequest extends FormRequest
     public function messages()
     {
         return [
+            'user_id.required' => 'ログインしてください',
             'date.required' => '日付を入力してください',
             'date.date' => '日付型で入力してください',
             'time.required' => '時間を入力してください',

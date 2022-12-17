@@ -25,19 +25,15 @@
   <div class="reservation">
     <h2 class="reservation__title">予約</h2>
     @if (count($errors) > 0)
-      <ul>
-        @foreach ($errors->all() as $error)
-        <li class="input__error">{{$error}}</li>
-        @endforeach
-      </ul>
+      @foreach ($errors->all() as $error)
+        <p class="error">{{$error}}</>
+      @endforeach
     @endif
     <form action="{{ route('create') }}" method="POST" class="reservation__form">
       @csrf
       <input type="hidden" name="shop_id" value="{{ $shops->id  }}">
       @if (Auth::check())
         <input type="hidden" name="user_id" value="{{ $user->id  }}">
-      @else
-          <p class="login__error">ログインしてください。</p>
       @endif
       <div>
         <input type="date" name="date" v-model="date" class="reservation__date--input">
@@ -102,6 +98,7 @@ el: '#shop',
   box-shadow: 2px 2px 1px #C0C0C0;
   padding: 3px 8px;
   margin-right: 5px;
+  cursor: pointer;
 }
 .shop__name {
   display: inline-block;
@@ -158,12 +155,6 @@ el: '#shop',
   margin-left: 30px;
   margin-bottom: 10px;
 }
-.login__error {
-  font-size: 12px;
-  color: #FF0000;
-  margin-left: 30px;
-  margin-bottom: 10px;
-}
 .reservation__table {
   width: 80%;
   background-color: #6495ED;
@@ -207,7 +198,7 @@ el: '#shop',
   position: absolute;
   bottom: 0px;
 }
-.input__error {
+.error {
   list-style: none;
   font-size: 12px;
   color: #FF0000;
