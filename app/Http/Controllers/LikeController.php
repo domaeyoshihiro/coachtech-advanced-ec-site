@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Requests\LikeRequest;
 
-
 class LikeController extends Controller
 {
     public function create(LikeRequest $request)
