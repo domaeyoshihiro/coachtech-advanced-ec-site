@@ -30,6 +30,6 @@ class ReservationController extends Controller
     public function delete(Request $request)
     {
         Reservation::find($request->id)->delete();
-        return redirect('/mypage');
+        return back();
     }
 }

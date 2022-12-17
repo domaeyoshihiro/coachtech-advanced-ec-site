@@ -15,7 +15,7 @@ class Like extends Model
     public function user(){
     return $this->belongsTo('App\Models\User');
     }
-    public function shops(){
+    public function shop(){
     return $this->belongsTo('App\Models\Shop');
     }
 }

@@ -24,6 +24,6 @@ class LikeController extends Controller
     public function delete(Request $request)
     {
         $likes= Like::where("shop_id", $request -> id )->where("user_id", $request -> user_id )->delete();
-        return redirect('/');
+        return back();
     }
 }
