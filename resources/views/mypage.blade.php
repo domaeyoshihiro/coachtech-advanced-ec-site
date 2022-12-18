@@ -3,6 +3,11 @@
 @include('layouts.header2')
 
 @section('content')
+@if (count($errors) > 0)
+  @foreach ($errors->all() as $error)
+    <p class="error">{{$error}}</p>
+  @endforeach
+@endif
 <div class="mypage">
   <div class="reservation">
     <h2 class="reservation__title">予約状況</h2>
