@@ -29,24 +29,37 @@
         </div>
       </div>
       <div>
-        <table class="reservation__table">
-          <tr class="reservation__tr">
-            <th class="reservation__th--first">Shop</th>
-            <td class="reservation__td">{{ $reservation->shop->shopname }}</td>
-          </tr>
-          <tr class="reservation__tr">
-            <th class="reservation__th">Date</th>
-            <td class="reservation__td">{{ date('Y-m-d', strtotime($reservation->reservationtime)) }}</td>
-          </tr>
-          <tr class="reservation__tr">
-            <th class="reservation__th">Time</th>
-            <td class="reservation__td">{{ date('H:i', strtotime($reservation->reservationtime)) }}</td>
-          </tr>
-          <tr class="reservation__tr">
-            <th class="reservation__th--last">Number</th>
-            <td class="reservation__td">{{ $reservation->number }}</td>
-          </tr>
-        </table>
+        <form action="/edit/{{ $reservation->id }}" method="POST">
+          @csrf
+          <input type="hidden" name="shop_id" value="{{ $reservation->shop->id  }}">
+          @if (Auth::check())
+            <input type="hidden" name="user_id" value="{{ $user->id  }}">
+          @endif
+          <table class="reservation__table">
+            <tr class="reservation__tr">
+              <th class="reservation__th--first">Shop</th>
+              <td class="reservation__td">{{ $reservation->shop->shopname }}</td>
+            </tr>
+              <tr class="reservation__tr">
+                <th class="reservation__th">Date</th>
+                <td class="reservation__td">
+                  <input type="date" value="{{ date('Y-m-d', strtotime($reservation->reservationtime)) }}" name="date" class="reservation__date--input">
+                </td>
+              </tr>
+              <tr class="reservation__tr">
+                <th class="reservation__th">Time</th>
+                <td class="reservation__td">
+                  <input type="time" value="{{ date('H:i', strtotime($reservation->reservationtime)) }}" name="time"  class="reservation__time--input"></td>
+              </tr>
+              <tr class="reservation__tr">
+                <th class="reservation__th--last">Number</th>
+                <td class="reservation__td">
+                  <input type="text" name="number" value="{{ $reservation->number }}" class="reservation__number--input">
+                </td>
+            </tr>
+          </table>
+          <button type="submit" name="update-btn" class="update__btn">予約変更</button>
+        </form>
       </div>
     </div>
     @endforeach
@@ -226,5 +239,15 @@
   font-size: 14px;
   color: #FF0000;
   margin-left: 60px;
+  margin-top: 20px;
+}
+.update__btn {
+  width: 100%;
+  color: #FFFFFF;
+  background-color:	#00008B;
+  border: none;
+  border-radius: 0 0 5px 5px;
+  cursor: pointer;
+  padding: 10px 0;
 }
 </style>

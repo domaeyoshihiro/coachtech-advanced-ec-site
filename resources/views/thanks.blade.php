@@ -4,11 +4,11 @@
 
 @section('content')
 <div class="thanks">
-    <div class="thanks__container">
-      <p class="thanks__text">会員登録ありがとうございます</p>
-      <button class="thanks__btn" onclick="location.href='/login'">ログインする</button>
-    </div>
+  <div class="thanks__container">
+    <p class="thanks__text">会員登録ありがとうございます</p>
+    <button class="thanks__btn" onclick="location.href='/login'">ログインする</button>
   </div>
+</div>
 @endsection
 
 <style>

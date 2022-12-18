@@ -16,6 +16,7 @@ Route::get('/thanks', function () {
 Route::get('/search', [ShopController::class, 'search'])->name('search');
 Route::get('/detail/{id}', [ShopController::class, 'show']);
 Route::post('/add', [ReservationController::class, 'create'])->name('create');
+Route::post('/edit/{id}', [ReservationController::class, 'update']);
 Route::post('/reservation/delete/{id}', [ReservationController::class, 'delete']);
 Route::get('/done', function () {
     return view('/done');
@@ -23,7 +24,6 @@ Route::get('/done', function () {
 Route::post('/like/add/{id}', [LikeController::class, 'create']);
 Route::post('/like/delete/{id}', [LikeController::class, 'delete']);
 Route::get('/mypage/{id}', [UserController::class, 'mypage'])->middleware(['auth']);
-
 
 Route::get('/dashboard', function () {
     return view('/dashboard');
