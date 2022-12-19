@@ -124,6 +124,7 @@
   width: 90%;
   border-top: 1px solid black;  
   margin-left: 20px;
+  margin-bottom: 20px;
 }
 .review__tr--comment {
   border-bottom: 1px solid black;  
