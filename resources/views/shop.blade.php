@@ -47,6 +47,10 @@
         </form>
         @endif
       </div>
+      <form action="/review/list/{{ $shop->id }}" method="GET">
+        @csrf
+        <button class="review__btn">レビューを見る</button>
+      </form>
     </div>
   </div>
   @endforeach
@@ -102,7 +106,7 @@
   border: none;
   border-radius: 5px;
   padding: 5px 10px;
-  margin: 0 0 30px 20px;
+  margin: 0 0 10px 20px;
   cursor: pointer;
 }
 .shop__like--img {
@@ -111,8 +115,18 @@
   margin-right: 15px;
 }
 .error {
-  font-size: 14px;
+  font-size: 12px;
   color: #FF0000;
   margin-left: 60px;
+}
+.review__btn {
+  font-size: 14px;
+  color: #000000;
+  background-color: #FFFF00;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 0 0 10px 20px;
+  cursor: pointer;
 }
 </style>

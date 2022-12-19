@@ -60,6 +60,10 @@
           </table>
           <button type="submit" name="update-btn" class="update__btn">予約変更</button>
         </form>
+        <form action="/review/{{ $reservation->shop->id }}" method="GET">
+          @csrf
+          <button class="review__btn">評価をする</button>
+        </form>
       </div>
     </div>
     @endforeach
@@ -245,6 +249,14 @@
   width: 100%;
   color: #FFFFFF;
   background-color:	#00008B;
+  border: none;
+  cursor: pointer;
+  padding: 10px 0;
+}
+.review__btn {
+  width: 100%;
+  color: #000000;
+  background-color:	#C0C0C0;
   border: none;
   border-radius: 0 0 5px 5px;
   cursor: pointer;

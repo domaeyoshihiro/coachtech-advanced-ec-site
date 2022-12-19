@@ -5,10 +5,8 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ReviewController;
 
-Route::get('/', function () {
-    return view('shop');
-});
 Route::get('/', [ShopController::class, 'index']);
 Route::get('/thanks', function () {
     return view('/thanks');
@@ -24,9 +22,11 @@ Route::get('/done', function () {
 Route::post('/like/add/{id}', [LikeController::class, 'create']);
 Route::post('/like/delete/{id}', [LikeController::class, 'delete']);
 Route::get('/mypage/{id}', [UserController::class, 'mypage'])->middleware(['auth']);
-
-Route::get('/dashboard', function () {
-    return view('/dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/review/list/{id}', [ReviewController::class, 'index']);
+Route::get('/review/{id}', [ReviewController::class, 'show'])->middleware(['auth']);
+Route::post('/review/add', [ReviewController::class, 'create'])->name('review.create');
+Route::get('/complete', function () {
+    return view('/complete');
+});
 
 require __DIR__.'/auth.php';
