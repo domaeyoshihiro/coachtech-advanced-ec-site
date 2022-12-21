@@ -223,4 +223,29 @@ target.addEventListener('click', () => {
   outline: none;
   padding-right: 100px;
 }
+@media screen and (max-width: 768px) {
+  .header {
+    display: block;
+  }
+  .header__search {
+    width: 80%;
+    margin: 25px auto 0;
+  }
+  .header__search--shopname {
+    padding-right: 20px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .header {
+    display: block;
+  }
+  .header__search {
+    width: 90%;
+    margin: 25px auto 0;
+  }
+  .header__search--shopname {
+    width: 20%;
+    padding-right: 0;
+  }
+}
 </style>

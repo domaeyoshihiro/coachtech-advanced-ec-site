@@ -96,4 +96,11 @@
     font-size: 12px;
     color: #FF0000;
 }
+@media screen and (max-width: 768px) {
+    .login__container {
+    width: 65%;
+    box-shadow: 2px 2px 1px #C0C0C0;
+    border-radius: 5px 5px 0 0;
+    }
+}
 </style>

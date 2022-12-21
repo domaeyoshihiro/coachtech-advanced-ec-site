@@ -149,4 +149,22 @@
   margin-left: 30px;
   margin-bottom: 10px;
 }
+@media screen and (max-width: 768px) {
+  .shop {
+    width: 100%;
+    display: block;
+  }
+  .shop__container {
+    width: 80%;
+    margin: 40px auto;
+  }
+  .review {
+    width: 80%;
+    margin:0 auto;
+    padding-bottom: 20px;
+  }
+  .review__title {
+    padding-top: 30px;
+  }
+}
 </style>

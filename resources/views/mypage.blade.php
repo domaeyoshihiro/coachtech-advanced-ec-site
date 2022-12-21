@@ -262,4 +262,32 @@
   cursor: pointer;
   padding: 10px 0;
 }
+@media screen and (max-width: 768px) {
+  .mypage {
+    display: block;
+    width: 100%;
+  }
+  .reservation {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .reservation__title {
+    font-size: 22px;
+    margin: 30px 0 30px 20px;
+  }
+  .reservation__container {
+    width: 100%;
+    margin:0 auto 30px ;
+  }
+  .like {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .like__flex {
+    display: block;
+  }
+  .shop__container {
+    width: 100%;
+  }
+}
 </style>

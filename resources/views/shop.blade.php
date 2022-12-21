@@ -129,4 +129,13 @@
   margin: 0 0 10px 20px;
   cursor: pointer;
 }
+@media screen and (max-width: 768px) {
+  .shop {
+    display: block;
+  }
+  .shop__container {
+    width: 80%;
+    margin: 0 auto 30px;
+  }
+}
 </style>

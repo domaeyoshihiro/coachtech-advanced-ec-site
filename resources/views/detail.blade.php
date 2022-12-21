@@ -205,4 +205,25 @@ el: '#shop',
   margin-left: 30px;
   margin-bottom: 10px;
 }
+@media screen and (max-width: 768px) {
+  .shop {
+    width: 100%;
+    display: block;
+  }
+  .shop__container {
+    width: 80%;
+    margin: 40px auto;
+  }
+  .reservation {
+    width: 80%;
+    height: 450px;
+    margin:0 auto;
+  }
+  .reservation__title {
+    padding-top: 30px;
+  }
+  .reservation__table {
+    margin-bottom: 30px;
+  }
+}
 </style>
