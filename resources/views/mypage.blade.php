@@ -75,7 +75,7 @@
       @foreach ($likes as $like)
       <div class="shop__container">
         <div>
-          <img src="{{ $like->shop->image }}" class="shop__img" />
+          <img src="{{ \Storage::url($like->shop->image) }}" class="shop__img">
         </div>
         <div class="shop__content">
           <div class="shop__name">{{ $like->shop->shopname }}</div>

@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Shop;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\ShopRequest;
+use Illuminate\Support\Facades\Storage;
+
 
 class ShopController extends Controller
 {
@@ -38,5 +41,20 @@ class ShopController extends Controller
         }
         $shops = $query->get();
         return view('shop', ['shops' => $shops, 'user' => $user]);
+    }
+    public function create(ShopRequest $request) 
+    {
+        $image_name = $request->file('image')->getClientOriginalName();
+        $image = Storage::putFileAs('public/img',$request->file('image'), $image_name);
+        $param = [
+            'shopname' => $request->shopname,
+            'detail' => $request->detail,
+            'image' => $image,
+            'area_id' => $request->area_id,
+            'genre_id' => $request->genre_id,
+        ];
+
+        Shop::create($param);
+        return redirect('/');
     }
 }

@@ -12,7 +12,7 @@
       <p class="shop__name">{{ $shops->shopname }}</p>
     </div>
     <div>
-      <img src="{{ $shops->image }}" class="shop__img" />
+      <img src="{{ \Storage::url($shops->image) }}" class="shop__img">
     </div>
     <div class="tag">
       <p class="shop__area--tag">#{{ $shops->area->area }}</p>

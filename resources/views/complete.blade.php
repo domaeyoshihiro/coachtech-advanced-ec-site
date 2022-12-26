@@ -8,7 +8,7 @@
     <p class="complete__text">評価いただきありがとうございます</p>
     <form action="/mypage/{{ Auth::user()->id }}" method="GET">
       @csrf
-      <button class="mypage__btn">マイページへ戻る</button>
+      <button class="mypage__back__btn">マイページへ戻る</button>
     </form>
   </div>
 </div>
@@ -33,7 +33,7 @@
   font-size: 20px;
   padding: 80px 30px 30px;
 }
-.mypage__btn {
+.mypage__back__btn {
   font-size: 14px;
   color: 	#FFFFFF;
   background-color: #0000FF;
