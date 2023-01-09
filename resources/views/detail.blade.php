@@ -21,6 +21,10 @@
       <p class="shop__genre--tag">#{{ $shops->genre->genre }}</p>
     </div>
     <div class="shop__detail">{{ $shops->detail }}</div>
+    <form action="/review/list/{{ $shops->id }}" method="GET">
+      @csrf
+      <button class="review__btn">レビューを見る</button>
+    </form>
   </div>
   <div class="reservation">
     <h2 class="reservation__title">予約</h2>
@@ -124,6 +128,16 @@ el: '#shop',
 .shop__detail {
   font-size: 14px;
   margin-top: 20px;
+}
+.review__btn {
+  font-size: 16px;
+  color: #FFFFFF;
+  background-color: #0000FF;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-top: 20px;
+  cursor: pointer;
 }
 .reservation {
   position: relative;

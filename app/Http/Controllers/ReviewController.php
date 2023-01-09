@@ -7,6 +7,7 @@ use App\Models\Review;
 use Illuminate\Http\Request;
 use App\Http\Requests\ReviewRequest;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class ReviewController extends Controller
 {
@@ -17,11 +18,18 @@ class ReviewController extends Controller
         $reviews = Review::with('shop', 'user')->where("shop_id", $id)->get();
         return view('list', ['shops' => $shops, 'reviews' => $reviews, 'user' => $user]);
     }
-    public function show($id)
+    public function show(Request $request, $id)
     {
-        $user = Auth::user();
-        $shops = Shop::with('area', 'genre')->find($id);
-        return view('review', ['shops' => $shops, 'user' => $user]);
+        $reservationtime = $request->reservationtime;
+        $dtnow = Carbon::now()->format("Y-m-d H:i:s");
+        
+        if($dtnow > $reservationtime) {
+            $user = Auth::user();
+            $shops = Shop::with('area', 'genre')->find($id);
+            return view('review', ['shops' => $shops, 'user' => $user]);
+        } else {
+            return back()->with('message', '来店後に評価できます。');
+        }
     }
     public function create(ReviewRequest $request) 
     {

@@ -11,6 +11,7 @@
 <div class="mypage">
   <div class="reservation">
     <h2 class="reservation__title">予約状況</h2>
+    <p class="error__text">{{ session('message') }}</p>
     @foreach ($reservations as $reservation)
     <div class="reservation__container">
       <div class="reservation__flex--top">
@@ -62,7 +63,8 @@
         </form>
         <form action="/review/{{ $reservation->shop->id }}" method="GET">
           @csrf
-          <button class="review__btn">評価をする</button>
+          <input type="hidden" name="reservationtime" value="{{ $reservation->reservationtime }}">
+          <button type="submit" class="review__btn">評価をする</button>
         </form>
       </div>
     </div>
@@ -115,6 +117,11 @@
 .reservation__title {
   font-size: 22px;
   margin: 110px 0 30px 60px;
+}
+.error__text {
+  color: #FF0000;
+  margin-left: 60px;
+  margin-bottom: 20px;
 }
 .reservation__container {
   width: 80%;
