@@ -21,11 +21,9 @@
 .mail__name {
   font-size: 18px;
 }
-
 .mail__shopname__th,
 .mail__number__th,
 .mail__reservationtime__th {
   text-align: left;
 }
-
 </style>
