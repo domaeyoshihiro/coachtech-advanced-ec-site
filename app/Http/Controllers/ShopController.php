@@ -53,7 +53,6 @@ class ShopController extends Controller
             'area_id' => $request->area_id,
             'genre_id' => $request->genre_id,
         ];
-
         Shop::create($param);
         return redirect('/');
     }

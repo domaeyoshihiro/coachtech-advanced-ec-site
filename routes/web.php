@@ -32,6 +32,8 @@ Route::get('/shop/add', function () {
     return view('shop_add');
 });
 Route::post('/shop/create', [ShopController::class, 'create'])->name('shop.create');
+Route::get('/reservation/detail/{id}', [ReservationController::class, 'show']);
+Route::get('/reservation/qrcode', [ReservationController::class, 'qrcode'])->name('qrcode');
 
 
 

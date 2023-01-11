@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Reservation;
+use App\Models\Shop;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Requests\ReservationRequest;
 use Carbon\Carbon;
@@ -50,5 +52,21 @@ class ReservationController extends Controller
     {
         Reservation::find($request->id)->delete();
         return back();
+    }
+    public function show(Request $request, $id)
+    {
+        $user = Auth::user();
+        $shop = Shop::where("id", $request->shop_id)->first();
+        $reservation = Reservation::all()->find($id);
+        return view('reservation_detail', ['user' => $user, 'shop' => $shop, 'reservation' => $reservation]);
+    }
+    public function qrcode(Request $request)
+    {
+        $shopname = $request->shopname;
+        $name = $request->name;
+        $email = $request->email;
+        $number = $request->number;
+        $reservationdt = $request->reservationdt;
+        return view('qrcode', ['shopname' => $shopname, 'name' => $name, 'email' => $email, 'number' => $number, 'reservationdt' => $reservationdt]);
     }
 }

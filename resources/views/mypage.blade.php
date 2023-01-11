@@ -61,6 +61,14 @@
           </table>
           <button type="submit" name="update-btn" class="update__btn">予約変更</button>
         </form>
+        <form action="/reservation/detail/{{ $reservation->id }}" method="GET">
+          @csrf
+          @if (Auth::check())
+            <input type="hidden" name="user_id" value="{{ $user->id  }}">
+          @endif
+          <input type="hidden" name="shop_id" value="{{ $reservation->shop->id  }}">
+          <button class="reservation__detail__btn">予約詳細</button>
+        </form>
         <form action="/review/{{ $reservation->shop->id }}" method="GET">
           @csrf
           <input type="hidden" name="reservationtime" value="{{ $reservation->reservationtime }}">
@@ -253,6 +261,14 @@
   margin-top: 20px;
 }
 .update__btn {
+  width: 100%;
+  color: #FFFFFF;
+  background-color:	#4169E1;
+  border: none;
+  cursor: pointer;
+  padding: 10px 0;
+}
+.reservation__detail__btn {
   width: 100%;
   color: #FFFFFF;
   background-color:	#00008B;
