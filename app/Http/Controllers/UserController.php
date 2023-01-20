@@ -12,7 +12,7 @@ class UserController extends Controller
   public function mypage($id)
   {
     $user = Auth::user();
-    $reservations = Reservation::with('shop')->where('user_id', $id)->get();
+    $reservations = Reservation::with('shop','course')->where('user_id', $id)->get();
     $likes = Like::with('shop.area','shop.genre')->where('user_id', $id)->get();
     return view('mypage', ['reservations' => $reservations, 'likes' => $likes, 'user' => $user]);
   }

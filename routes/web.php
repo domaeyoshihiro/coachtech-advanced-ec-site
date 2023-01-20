@@ -13,7 +13,7 @@ Route::get('/thanks', function () {
 })->middleware(['verified']);
 Route::get('/search', [ShopController::class, 'search'])->name('search');
 Route::get('/detail/{id}', [ShopController::class, 'show']);
-Route::post('/add', [ReservationController::class, 'create'])->name('create');
+Route::post('/reservation/add', [ReservationController::class, 'create'])->name('reservation.create');
 Route::post('/edit/{id}', [ReservationController::class, 'update']);
 Route::post('/reservation/delete/{id}', [ReservationController::class, 'delete']);
 Route::get('/done', function () {
@@ -35,6 +35,13 @@ Route::post('/shop/create', [ShopController::class, 'create'])->name('shop.creat
 Route::get('/reservation/detail/{id}', [ReservationController::class, 'show']);
 Route::get('/reservation/qrcode', [ReservationController::class, 'qrcode'])->name('qrcode');
 
+Route::post('/reservation/settlement',[ReservationController::class, 'settlement'])->name('settlement');
+
+Route::get('/shop/course/{id}', [ShopController::class, 'course']);
+Route::post('/shop/course/add', [ShopController::class, 'courseCreate'])->name('course.create');
+
+
+Route::post('/payment',[ReservationController::class, 'pay']);
 
 
 require __DIR__.'/auth.php';

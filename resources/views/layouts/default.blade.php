@@ -7,6 +7,7 @@
   <title>飲食店アプリ</title>
   <link rel="stylesheet" href="../../css/reset.css">
   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script src="https://js.stripe.com/v3/"></script>
 </head>
 
 <body class="container">

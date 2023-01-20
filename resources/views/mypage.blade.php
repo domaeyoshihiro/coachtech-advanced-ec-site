@@ -53,11 +53,17 @@
                   <input type="time" value="{{ date('H:i', strtotime($reservation->reservationtime)) }}" name="time"  class="reservation__time--input"></td>
               </tr>
               <tr class="reservation__tr">
-                <th class="reservation__th--last">Number</th>
+                <th class="reservation__th">Number</th>
                 <td class="reservation__td">
                   <input type="text" name="number" value="{{ $reservation->number }}" class="reservation__number--input">
                 </td>
             </tr>
+            @if(!is_null($reservation->course))
+            <tr class="reservation__tr">
+              <th class="reservation__th">Course</th>
+              <td class="reservation__td">{{ $reservation->course->coursename }}</td>
+            </tr>
+            @endif
           </table>
           <button type="submit" name="update-btn" class="update__btn">予約変更</button>
         </form>
@@ -175,14 +181,6 @@
   padding-left: 30px;
   padding-bottom: 10px;
 }
-.reservation__th--last {
-  width: 30%;
-  font-weight: lighter;
-  color: #FFFFFF;
-  text-align: left;
-  padding-left: 30px;
-  padding-bottom: 30px;
-}
 .reservation__td {
   width: 50%;
   color: #FFFFFF;
@@ -267,6 +265,7 @@
   border: none;
   cursor: pointer;
   padding: 10px 0;
+  margin-top: 20px;
 }
 .reservation__detail__btn {
   width: 100%;

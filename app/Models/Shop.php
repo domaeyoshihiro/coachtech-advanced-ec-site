@@ -26,6 +26,9 @@ class Shop extends Model
     public function review(){
         return $this->hasMany('App\Models\Review');
     }
+    public function courses(){
+        return $this->hasMany('App\Models\Course');
+    }
     public function is_liked_by_auth_user()
     {
         $id = Auth::id();
