@@ -8,6 +8,7 @@
             <h1 class="register__title">Registration</h1>
             <form method="POST" action="{{ route('register') }}" class="register__form">
                 @csrf
+                <x-input type="hidden" name="role" :value="3" />
                 <div class="register__name">
                     @if ($errors->has('name'))
                         <p class="error">{{$errors->first('name')}}</p>

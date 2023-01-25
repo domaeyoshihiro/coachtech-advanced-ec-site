@@ -9,6 +9,7 @@
         <x-auth-session-status :status="session('status')" />
         <form method="POST" action="{{ route('login') }}" class="login__form">
             @csrf
+            <p class="error">{{ session('message') }}</p>
             <div class="login__email">
                 @if ($errors->has('email'))
                     <p class="error">{{$errors->first('email')}}</p>

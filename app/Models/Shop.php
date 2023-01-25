@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Shop extends Model
 {
     use HasFactory;
-    protected $fillable = ['shopname','image', 'detail', 'area_id', 'genre_id'];
+    protected $fillable = ['shopname','image', 'detail', 'area_id', 'genre_id', 'user_id'];
 
     public function reservations(){
         return $this->hasMany('App\Models\Reservation');
@@ -28,6 +28,9 @@ class Shop extends Model
     }
     public function courses(){
         return $this->hasMany('App\Models\Course');
+    }
+    public function users(){
+        return $this->belongsTo('App\Models\User');
     }
     public function is_liked_by_auth_user()
     {

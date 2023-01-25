@@ -25,10 +25,6 @@
       @csrf
       <button class="review__btn">レビューを見る</button>
     </form>
-    <form action="/shop/course/{{ $shops->id }}" method="GET">
-      @csrf
-      <button class="course__btn">コース料理を追加する</button>
-    </form>
   </div>
   <div class="reservation">
     <h2 class="reservation__title">予約</h2>
@@ -164,8 +160,7 @@ function chbx(obj) {
   font-size: 14px;
   margin-top: 20px;
 }
-.review__btn,
-.course__btn {
+.review__btn {
   font-size: 16px;
   color: #FFFFFF;
   background-color: #0000FF;

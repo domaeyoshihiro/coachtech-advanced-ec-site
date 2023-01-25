@@ -17,6 +17,8 @@ class CreateShopsTable extends Migration
             $table->foreign('area_id')->references('id')->on('areas')->cascadeOnDelete();
             $table->unsignedBigInteger('genre_id');
             $table->foreign('genre_id')->references('id')->on('genres')->cascadeOnDelete();
+            $table->unsignedBigInteger('user_id')->nullable(true);
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
             $table->timestamps();
         });
     }

@@ -15,6 +15,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
+        'role',
     ];
     protected $hidden = [
         'password',
@@ -31,5 +32,8 @@ class User extends Authenticatable implements MustVerifyEmail
     }
     public function review(){
         return $this->hasMany('App\Models\Review');
+    }
+    public function shops(){
+        return $this->hasOne('App\Models\Shop');
     }
 }

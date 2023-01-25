@@ -15,7 +15,7 @@ class Reservation extends Model
         'shop_id',
         'course_id',
     ];
-    public function users(){
+    public function user(){
         return $this->belongsTo('App\Models\User');
     }
     public function shop(){

@@ -1,12 +1,17 @@
 @extends('layouts.default')
 
-@include('layouts.header2')
-
 @section('content')
-<div class="shop" id="shop">
+<div class="admin__management__header">
+  <h1 class="admin__management__title">店舗代表者管理画面</h1>
+  <form action="{{ route('representative.logout') }}" method="post">
+    @csrf
+    <button type="submit" name="lgout-btn" class="logout__btn">Logout</button>
+  </form>
+</div>
+<div class="shop">
   <div class="shop__container">
     <div>
-      <button class="back__btn" onclick="location.href='/'"><</button>
+      <button class="back__btn" onclick="location.href='/representative/management'"><</button>
       <p class="shop__name">{{ $shops->shopname }}</p>
     </div>
     <div>
@@ -42,6 +47,26 @@
 </div>
 
 <style>
+.admin__management__header {
+  display: flex;
+  justify-content: space-between;
+}
+.admin__management__title {
+  font-size: 24px;
+  margin-left: 60px;
+  margin-top: 30px;
+}
+.logout__btn {
+  font-size: 18px;
+  color: 	#FFFFFF;
+  background-color: #0000FF;
+  border: none;
+  border-radius: 5px;
+  padding: 3px 10px;
+  margin-top: 40px;
+  margin-right: 60px;
+  cursor: pointer;
+}
 .shop {
   width: 100%;
   display: flex;
@@ -144,6 +169,11 @@
   margin-bottom: 10px;
 }
 @media screen and (max-width: 768px) {
+  .admin__management__title {
+    font-size: 22px;
+    margin-left: 30px;
+    margin-top: 40px;
+  }
   .shop {
     width: 100%;
     display: block;
