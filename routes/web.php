@@ -36,7 +36,6 @@ Route::group(['middleware' => ['auth', 'can:general']], function () {
     Route::post('/payment',[ReservationController::class, 'pay']);
 });
 
-
 Route::group(['middleware' => ['auth', 'can:admin']], function () {
     Route::get('/admin/management', function () {
         return view('admin/admin_management');
@@ -46,6 +45,7 @@ Route::group(['middleware' => ['auth', 'can:admin']], function () {
         return view('admin/complete_representative_add');
     });
     Route::post('/admin/logout', [UserController::class, 'destroy'])->name('admin.logout');
+    Route::post('/admin/notification/mail', [UserController::class, 'sendMail'])->name('admin.mail');
 });
 
 Route::group(['middleware' => ['auth', 'can:representative']], function () {

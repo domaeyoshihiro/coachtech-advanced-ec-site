@@ -27,22 +27,22 @@ class ReservationController extends Controller
                 'source'=> request()->stripeToken,
             ));
         }
-            $date = $request->date;
-            $carbon = Carbon::make($date);
-            $time = $request->time;
-            $t=explode(':',$time);
-            $carbon->setHour($t[0]);
-            $carbon->setMinute($t[1]);
-            $datetime = $carbon->format('Y-m-d H:i');
-            $param = [
-                'reservationtime' => $datetime,
-                'number' => $request->number,
-                'user_id' => $request->user_id,
-                'shop_id' => $request->shop_id,
-                'course_id' => $request->course_id,
-            ];
-            Reservation::create($param);
-            return redirect('/done');
+        $date = $request->date;
+        $carbon = Carbon::make($date);
+        $time = $request->time;
+        $t=explode(':',$time);
+        $carbon->setHour($t[0]);
+        $carbon->setMinute($t[1]);
+        $datetime = $carbon->format('Y-m-d H:i');
+        $param = [
+            'reservationtime' => $datetime,
+            'number' => $request->number,
+            'user_id' => $request->user_id,
+            'shop_id' => $request->shop_id,
+            'course_id' => $request->course_id,
+        ];
+        Reservation::create($param);
+        return redirect('/done');
     }
     public function update(ReservationRequest $request)
     {

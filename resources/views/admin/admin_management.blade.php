@@ -44,6 +44,30 @@
   </div>
   <div class="mail">
     <h2 class="mail__title">Mail</h2>
+    <p class="mail__complete__message">{{ session('message') }}</p>
+    <form action="{{ route('admin.mail') }}" method="POST" class="mail__form">
+    @csrf
+    <table class="mail__table">
+      @if (count($errors) > 0)
+        @foreach ($errors->all() as $error)
+        <p class="error">{{$error}}</p>
+        @endforeach
+      @endif
+      <tr class="mail__tr">
+        <th class="mail__th">件名</th>
+        <td class="mail__td"><input type="text" name="subject" class="mail__subject--input"></td>
+      </tr>
+      <tr class="mail__tr">
+        <th class="mail__th">お知らせタイトル</th>
+        <td class="mail__td"><input type="text" name="title" class="mail__title--input"></td>
+      </tr>
+      <tr class="mail__tr">
+        <th class="mail__th">お知らせ内容</th>
+        <td class="mail__td"><textarea name="detail" class="mail__detail--input">{{ old('detail') }}</textarea></td>
+      </tr>
+    </table>
+    <button type="submit" class="mail__btn">お知らせを送信する</button>
+  </form>
   </div>
 </div>
 @endsection
@@ -70,73 +94,138 @@
   cursor: pointer;
 }
 .management__container {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 80vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 80vh;
 }
 .register {
-    width: 30%;
-    box-shadow: 2px 2px 1px #C0C0C0;
-    border-radius: 5px 5px 0 0;
+  width: 30%;
+  box-shadow: 2px 2px 1px #C0C0C0;
+  border-radius: 5px 5px 0 0;
 }
 .register__title {
-    font-size: 16px;
-    font-weight: lighter;
-    color: 	#FFFFFF;
-    background-color: #0000FF;
-    border-radius: 5px 5px 0 0;
-    padding: 15px;
+  font-size: 16px;
+  font-weight: lighter;
+  color: 	#FFFFFF;
+  background-color: #0000FF;
+  border-radius: 5px 5px 0 0;
+  padding: 15px;
 }
 .register__form {
-    background-color: #FFFFFF;
-    border-radius: 0 0 5px 5px;
-    padding-bottom: 20px;
+  background-color: #FFFFFF;
+  border-radius: 0 0 5px 5px;
+  padding-bottom: 20px;
 }
 .register__name {
-    padding-top: 15px;
-    padding-left: 20px;
+  padding-top: 15px;
+  padding-left: 20px;
 }
 .register__email {
-    padding-left: 20px;
+  padding-left: 20px;
 }
 .register__password {
-    padding-left: 20px;
-    padding-bottom: 20px;
+  padding-left: 20px;
+  padding-bottom: 20px;
 }
 .register__name--input,
 .register__email--input,
 .register__password--input {
-    font-size: 14px;
-    width: 85%;
-    border: none;
-    outline: none;
-    border-bottom: 1px solid #000000;
-    margin-bottom: 10px;
+  font-size: 14px;
+  width: 85%;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #000000;
+  margin-bottom: 10px;
 }
 .register__name--img,
 .register__email--img,
 .register__password--img {
-    width: 20px;
-    height: 20px;
-    margin-top: 10px;
+  width: 20px;
+  height: 20px;
+  margin-top: 10px;
 }
 .register__btn {
-    display: block;
-    font-size: 14px;
-    color: 	#FFFFFF;
-    background-color: #0000FF;
-    border: none;
-    border-radius: 5px;
-    padding: 3px 10px;
-    margin: 0 20px 0 auto;
-    cursor: pointer;
+  display: block;
+  font-size: 14px;
+  color: 	#FFFFFF;
+  background-color: #0000FF;
+  border: none;
+  border-radius: 5px;
+  padding: 3px 10px;
+  margin: 0 20px 0 auto;
+  cursor: pointer;
+}
+.mail {
+  width: 40%;
+}
+.mail__title {
+  font-size: 20px;
+  margin-left: 30px;
+  margin-top: 30px;
+}
+.mail__complete__message {
+  margin-left: 30px;
+  margin-top: 20px;
+}
+.mail__form {
+  width: 100%;
+  background-color: #4169E1;
+  margin: 0 auto;
+  box-shadow: 2px 2px 1px #C0C0C0;
+  border-radius: 5px;
+}
+.mail__table {
+  width: 90%;
+  margin: 30px auto 20px;
+}
+.mail__th {
+  width: 40%;
+  text-align: left;
+  vertical-align: top;
+  color: #FFFFFF;
+  padding-top: 20px;
+}
+.mail__td {
+  width: 60%;
+}
+.mail__subject--input,
+.mail__title--input {
+  width: 100%;
+  margin-top: 20px;
+}
+.mail__detail--input {
+  width: 100%;
+  padding-bottom: 50px;
+  margin-top: 20px;
+  resize: none;
+}
+.mail__btn {
+  width: 100%;
+  color: #FFFFFF;
+  background-color: #0000CD;
+  border: none;
+  border-radius: 0 0 5px 5px;
+  cursor: pointer;
+  padding: 10px 0;
 }
 .error {
-    font-size: 12px;
-    color: #FF0000;
+  font-size: 12px;
+  color: #FF0000;
+  padding-top: 20px;
+  margin-left: 20px;
 }
 @media screen and (max-width: 768px) {
-  
+  .management__container {
+    display: block;
+  }
+  .register {
+    width: 80%;
+    margin: 30px auto 0;
+  }
+  .mail {
+    width: 80%;
+    margin: 0 auto;
+  }
 }
 </style>

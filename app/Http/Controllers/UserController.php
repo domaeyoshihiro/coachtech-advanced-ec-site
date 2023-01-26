@@ -9,6 +9,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\NotificationMailRequest;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\NotificationMail;
 
 class UserController extends Controller
 {
@@ -35,5 +38,19 @@ class UserController extends Controller
     $request->session()->invalidate();
     $request->session()->regenerateToken();
     return redirect('/login');
+  }
+  public function sendMail(NotificationMailRequest $request)
+  {
+    
+    $users = User::where('role', 3)->get();
+    foreach($users as $user) {
+      $name = $user->name;
+      $email = $user->email;
+      $subject = $request->subject;
+      $title = $request->title;
+      $detail = $request->detail;
+      Mail::send(new NotificationMail($name, $email, $subject, $title, $detail));
+      return back()->with('message', 'お知らせを送信しました。');
+    }
   }
 }
