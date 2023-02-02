@@ -33,7 +33,7 @@
         <p class="error">{{$error}}</>
       @endforeach
     @endif
-    <form action="{{ route('settlement') }}" method="POST" class="reservation__form">
+    <form action="{{ route('settlement') }}" method="GET" class="reservation__form">
       @csrf
       <input type="hidden" name="shop_id" value="{{ $shops->id  }}">
       @if (Auth::check())
@@ -99,7 +99,6 @@ el: '#shop',
     number:'1人',
   }
 });
-
 function chbx(obj) {
   let that = obj;
   const isChecked = document.getElementsByClassName("reservation__coures--input");

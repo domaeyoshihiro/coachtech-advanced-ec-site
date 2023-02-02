@@ -48,18 +48,28 @@
     <form action="{{ route('admin.mail') }}" method="POST" class="mail__form">
     @csrf
     <table class="mail__table">
-      @if (count($errors) > 0)
-        @foreach ($errors->all() as $error)
-        <p class="error">{{$error}}</p>
-        @endforeach
-      @endif
+      <tr>
+        @if ($errors->has('subject'))
+          <td class="error__td">{{$errors->first('subject')}}</td>
+        @endif
+      </tr>
       <tr class="mail__tr">
         <th class="mail__th">件名</th>
         <td class="mail__td"><input type="text" name="subject" class="mail__subject--input"></td>
       </tr>
+      <tr>
+        @if ($errors->has('title'))
+          <td class="error__td">{{$errors->first('title')}}</td>
+        @endif
+      </tr>
       <tr class="mail__tr">
         <th class="mail__th">お知らせタイトル</th>
         <td class="mail__td"><input type="text" name="title" class="mail__title--input"></td>
+      </tr>
+      <tr>
+        @if ($errors->has('detail'))
+          <td class="error__td">{{$errors->first('detail')}}</td>
+        @endif
       </tr>
       <tr class="mail__tr">
         <th class="mail__th">お知らせ内容</th>
@@ -209,7 +219,8 @@
   cursor: pointer;
   padding: 10px 0;
 }
-.error {
+.error,
+.error__td {
   font-size: 12px;
   color: #FF0000;
   padding-top: 20px;

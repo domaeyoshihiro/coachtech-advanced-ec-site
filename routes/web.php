@@ -32,8 +32,7 @@ Route::group(['middleware' => ['auth', 'can:general']], function () {
     });
     Route::get('/reservation/detail/{id}', [ReservationController::class, 'show']);
     Route::get('/reservation/qrcode', [ReservationController::class, 'qrcode'])->name('qrcode');
-    Route::post('/reservation/settlement',[ReservationController::class, 'settlement'])->name('settlement');
-    Route::post('/payment',[ReservationController::class, 'pay']);
+    Route::get('/reservation/settlement',[ReservationController::class, 'settlement'])->name('settlement');
 });
 
 Route::group(['middleware' => ['auth', 'can:admin']], function () {

@@ -13,7 +13,7 @@ class CourseRequest extends FormRequest
     public function rules()
     {
         return [
-            'coursename' => ['required', 'min:4', 'max:191'],
+            'coursename' => ['required','string', 'min:4', 'max:191'],
             'price' => ['required','regex:/^[1-9][0-9]+/'],
             'shop_id' => ['required'],
 
@@ -23,6 +23,7 @@ class CourseRequest extends FormRequest
     {
         return [
             'coursename.required' => 'コース名を入力してください',
+            'coursename.string' => 'コース名は文字列で入力してください',
             'coursename.min' => 'コース名は4文字以上で入力してください',
             'coursename.max' => 'コース名は191文字以下で入力してください',
             'price.required' => '金額を入力してください',

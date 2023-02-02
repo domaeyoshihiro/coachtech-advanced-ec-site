@@ -31,6 +31,11 @@
     <h2 class="shop__edit__title">ショップ内容更新</h2>
     <form action="{{ route('shop.update')}}" method="POST" enctype="multipart/form-data" class="shop__edit__form">
       @csrf
+      @if (count($errors) > 0)
+        @foreach ($errors->all() as $error)
+        <p class="error">{{$error}}</p>
+        @endforeach
+      @endif
       <input type="hidden" name="shop_id" value="{{ $shop->id }}">
       <input type="hidden" name="user_id" value="{{ Auth::id() }}">
       <table class="shop__edit__table">
@@ -240,6 +245,8 @@
 .error {
     font-size: 12px;
     color: #FF0000;
+    padding-top: 20px;
+    margin-left: 20px;
 }
 @media screen and (max-width: 768px) {
   .admin__management__title {
@@ -285,7 +292,6 @@
     margin-bottom: 40px;
   }
 }
-
 @media screen and (max-width: 481px) {
   .shop__edit__th,
   .shop__edit__th--first {

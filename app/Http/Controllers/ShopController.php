@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Shop;
 use App\Models\Course;
+use App\Models\Area;
+use App\Models\Genre;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,7 +16,19 @@ class ShopController extends Controller
     {
         $user = Auth::user();
         $shops = Shop::with('area', 'genre','likes')->get();
-        return view('shop', ['shops' => $shops, 'user' => $user]);
+        if(is_null($user) || $user->role == 3) {
+            return view('shop', ['shops' => $shops, 'user' => $user]);
+        }
+        if($user->role == 1) {
+            return view('admin/admin_management');
+        }
+        if($user->role == 2) {
+            $id = Auth::id();
+            $shop = Shop::where('user_id', $id)->with('area', 'genre')->first();
+            $areas = Area::all();
+            $genres = Genre::all();
+            return view('representative/representative_management', ['shop' => $shop, 'areas' => $areas, 'genres' => $genres]);
+        }
     }
     public function show($id)
     {
