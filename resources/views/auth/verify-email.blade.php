@@ -1,39 +1,88 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+@extends('layouts.default')
 
-        <div class="mb-4 text-sm text-gray-600">
-            {{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
+@section('content')
+<div class="verify-email__flex">
+    <div class="verify-email__container">
+        <div class="verify-email__text">
+            {{ __('サインアップありがとうございます。ご登録の前に、メールに記載されているリンクをクリックして、メールアドレスの確認をしてください。もしメールが届いていない場合は、認証メール再送信ボタンを押してください。') }}
         </div>
-
         @if (session('status') == 'verification-link-sent')
-            <div class="mb-4 font-medium text-sm text-green-600">
-                {{ __('A new verification link has been sent to the email address you provided during registration.') }}
+            <div class="resend-verify-email__text">
+                {{ __('登録時に入力されたメールアドレスに、新しい認証リンクが送信されました。') }}
             </div>
         @endif
-
-        <div class="mt-4 flex items-center justify-between">
-            <form method="POST" action="{{ route('verification.send') }}">
+        <div class="verify-email__btn">
+            <form method="POST" action="{{ route('verification.send') }}" class="resend-verify-email__form">
                 @csrf
-
                 <div>
-                    <x-button>
-                        {{ __('Resend Verification Email') }}
+                    <x-button class="resend-verify-email__btn">
+                        {{ __('認証メール再送信') }}
                     </x-button>
                 </div>
             </form>
-
-            <form method="POST" action="{{ route('logout') }}">
+            <form method="POST" action="{{ route('logout') }}" class="logout__form">
                 @csrf
-
-                <button type="submit" class="underline text-sm text-gray-600 hover:text-gray-900">
-                    {{ __('Log Out') }}
+                <button type="submit" class="logout__btn">
+                    {{ __('ログアウト') }}
                 </button>
             </form>
         </div>
-    </x-auth-card>
-</x-guest-layout>
+    </div>
+</div>
+@endsection
+
+<style>
+.verify-email__flex {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+}
+.verify-email__container {
+    width: 50%;
+    box-shadow: 2px 2px 1px #C0C0C0;
+    margin: 0 auto;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+}
+.verify-email__text {
+    color: #000000;
+    margin: 30px;
+}
+.resend-verify-email__text {
+    margin: 0 30px 20px;
+}
+.verify-email__btn {
+    width: 100%;
+    margin: 0 auto;
+}
+.resend-verify-email__form,
+.logout__form {
+    margin-bottom: 0;
+}
+.resend-verify-email__btn {
+    display: block;
+    color: 	#FFFFFF;
+    background-color: #0000FF;
+    border: none;
+    border-radius: 5px;
+    margin: 0 auto 10px auto;
+    padding:3px 5;
+    cursor: pointer;
+}
+.logout__btn {
+    display: block;
+    color: 	#FFFFFF;
+    background-color: #0000FF;
+    border: none;
+    border-radius: 5px;
+    margin: 0 auto 20px auto;
+    padding:3px 5;
+    cursor: pointer;
+}
+@media screen and (max-width: 768px) {
+    .verify-email__container {
+        width: 80%;
+}
+}
+
+</style>

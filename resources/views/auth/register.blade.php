@@ -8,6 +8,7 @@
             <h1 class="register__title">Registration</h1>
             <form method="POST" action="{{ route('register') }}" class="register__form">
                 @csrf
+                <x-input type="hidden" name="role" :value="3" />
                 <div class="register__name">
                     @if ($errors->has('name'))
                         <p class="error">{{$errors->first('name')}}</p>
@@ -106,5 +107,12 @@
 .error {
     font-size: 12px;
     color: #FF0000;
+}
+@media screen and (max-width: 768px) {
+    .register__container {
+    width: 65%;
+    box-shadow: 2px 2px 1px #C0C0C0;
+    border-radius: 5px 5px 0 0;
+    }
 }
 </style>

@@ -14,7 +14,10 @@
             @csrf
             <button type="submit" name="lgout-btn" class="logout__btn">Logout</button>
           </form>
-          <li class="drawer__nav-list-item"><a class="drawer__nav-list-link" href="/mypage">Mypage</a></li>
+          <form action="/mypage/{{ Auth::user()->id }}" method="GET">
+            @csrf
+            <button class="mypage__btn">Mypage</button>
+          </form>
         </ul>
       </nav>
       </div>
@@ -92,7 +95,8 @@ target.addEventListener('click', () => {
   margin-top: 30px;
   color: #0000FF;
 }
-.logout__btn{
+.logout__btn,
+.mypage__btn {
   font-size: 24px;
   margin-top: 30px;
   color: #0000FF;
@@ -218,5 +222,30 @@ target.addEventListener('click', () => {
   border: none;
   outline: none;
   padding-right: 100px;
+}
+@media screen and (max-width: 768px) {
+  .header {
+    display: block;
+  }
+  .header__search {
+    width: 80%;
+    margin: 25px auto 0;
+  }
+  .header__search--shopname {
+    padding-right: 20px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .header {
+    display: block;
+  }
+  .header__search {
+    width: 90%;
+    margin: 25px auto 0;
+  }
+  .header__search--shopname {
+    width: 20%;
+    padding-right: 0;
+  }
 }
 </style>

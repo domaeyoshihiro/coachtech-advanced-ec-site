@@ -7,11 +7,16 @@
 @endif
 
 @section('content')
+@if (count($errors) > 0)
+  @foreach ($errors->all() as $error)
+    <p class="error">{{$error}}</p>
+  @endforeach
+@endif
 <div class="shop">
   @foreach ($shops as $shop)
   <div class="shop__container">
     <div>
-      <img src="{{ $shop->image }}" class="shop__img" />
+      <img src="{{ \Storage::url($shop->image) }}" class="shop__img">
     </div>
     <div class="shop__content">
       <div class="shop__name">{{ $shop->shopname }}</div>
@@ -24,30 +29,23 @@
           @csrf
           <button class="shop__btn">詳しくみる</button>
         </form>
-
-        @if ($shop->likes.includes($user->id))
-        <form action="/like/add/{{ $shop->id }}" method="POST" class="">
-          @csrf
-          @if (Auth::check())
-            <input type="hidden" name="user_id" value="{{ $user->id  }}">
-          @else
-            <p class="login__error">ログインしてください。</p>
-          @endif
-          <input type="image" src="{{ asset('img/heart.png') }}" class="shop__like--img">
-        </form>
-        @else
+        @if ($shop->is_liked_by_auth_user())
         <form action="/like/delete/{{ $shop->id }}" method="POST" class="">
           @csrf
           @if (Auth::check())
             <input type="hidden" name="user_id" value="{{ $user->id  }}">
-          @else
-            <p class="login__error">ログインしてください。</p>
           @endif
           <input type="image" src="{{ asset('img/heart2.png') }}" class="shop__like--img">
         </form>
+        @else
+        <form action="/like/add/{{ $shop->id }}" method="POST" class="">
+          @csrf
+          @if (Auth::check())
+            <input type="hidden" name="user_id" value="{{ $user->id  }}">
+          @endif
+          <input type="image" src="{{ asset('img/heart.png') }}" class="shop__like--img">
+        </form>
         @endif
-
-        
       </div>
     </div>
   </div>
@@ -104,12 +102,26 @@
   border: none;
   border-radius: 5px;
   padding: 5px 10px;
-  margin: 0 0 30px 20px;
+  margin: 0 0 20px 20px;
   cursor: pointer;
 }
 .shop__like--img {
   width: 30px;
   height: 30px;
   margin-right: 15px;
+}
+.error {
+  font-size: 12px;
+  color: #FF0000;
+  margin-left: 60px;
+}
+@media screen and (max-width: 768px) {
+  .shop {
+    display: block;
+  }
+  .shop__container {
+    width: 80%;
+    margin: 0 auto 30px;
+  }
 }
 </style>

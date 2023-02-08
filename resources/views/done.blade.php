@@ -40,4 +40,12 @@
   margin-bottom: 80px;
   cursor: pointer;
 }
+@media screen and (max-width: 768px) {
+  .done__container {
+    width: 60%;
+    background-color: #FFFFFF;
+    box-shadow: 2px 2px 1px #C0C0C0;
+    border-radius: 5px 5px 0 0;
+  }
+}
 </style>

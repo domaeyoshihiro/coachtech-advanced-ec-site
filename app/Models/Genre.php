@@ -12,6 +12,6 @@ class Genre extends Model
         'genre',
     ];
     public function shops(){
-    return $this->hasMany('App\Models\Shop');
+        return $this->hasMany('App\Models\Shop');
     }
 }

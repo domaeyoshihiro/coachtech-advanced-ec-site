@@ -9,6 +9,7 @@
         <x-auth-session-status :status="session('status')" />
         <form method="POST" action="{{ route('login') }}" class="login__form">
             @csrf
+            <p class="error">{{ session('message') }}</p>
             <div class="login__email">
                 @if ($errors->has('email'))
                     <p class="error">{{$errors->first('email')}}</p>
@@ -95,5 +96,12 @@
 .error {
     font-size: 12px;
     color: #FF0000;
+}
+@media screen and (max-width: 768px) {
+    .login__container {
+    width: 65%;
+    box-shadow: 2px 2px 1px #C0C0C0;
+    border-radius: 5px 5px 0 0;
+    }
 }
 </style>
