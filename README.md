@@ -54,6 +54,7 @@ resistrationでアカウント登録してからいいね機能や予約機能�
 
 ## 使用技術
 Laravel Framework 8.83.27
+
 Docker version 20.10.22
 
 ## テーブル設計
@@ -66,4 +67,46 @@ Docker version 20.10.22
 <img width="368" alt="スクリーンショット 2023-02-16 23 36 53" src="https://user-images.githubusercontent.com/110466543/219394656-b7cd157b-0511-4f1b-813a-0bba3b0daf11.png">
 
 ## 環境構築
+1. MAMPのインストール
+
+MAMPのダウンロードページからMAMP&MAMP Proを選択
+
+ファイルがダウンロードされ、インストーラーのウィザードに従ってインストールを進める
+
+MAMPを起動するためにMAMPフォルダの中にある、MAMP.appを開く
+
+Preferencesを選択後、「80 ＆ 3306」ボタンをクリックし、OKボタンをクリックし初期設定をする。
+
+右上の「Start」を選択し、MAMPを起動
+
+2. mysql
+
+cd /Applications/MAMP/Library/bin/
+
+./mysql -u root -p
+
+Enter password: rootと入力
+
+3. Composerインストール
+
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+brew install composer
+
+4. Laravelプロジェクト作成
+
+cd /Applications/MAMP/htdocs/
+
+composer create-project "laravel/laravel=8.*" プロジェクト名 --prefer-dist
+
+
+5. laravel sailインストール
+
+composer require laravel/sail --dev
+
+php artisan sail:install
+
+6. サーバー立ち上げ
+
+./vendor/bin/sail up
 
