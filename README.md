@@ -69,25 +69,29 @@ Docker version 20.10.22
 ## 環境構築
 1. MAMP
 
-　1.1 MAMPのダウンロードページからMAMP&MAMP Proを選択
+　　1.1 MAMPのダウンロードページからMAMP&MAMP Proを選択
 
-　1.2 ファイルがダウンロードされ、インストーラーのウィザードに従ってインストールを進める
+　　1.2 ファイルがダウンロードされ、インストーラーのウィザードに従ってインストールを進める
 
-　1.3 MAMPを起動するためにMAMPフォルダの中にある、MAMP.appを開く
+　　1.3 MAMPを起動するためにMAMPフォルダの中にある、MAMP.appを開く
 
-　1.4 Preferencesを選択後、「80 ＆ 3306」ボタンをクリックし、OKボタンをクリックし初期設定をする。
+　　1.4 Preferencesを選択後、「80 ＆ 3306」ボタンをクリックし、OKボタンをクリックし初期設定をする。
 
-　1.5右上の「Start」を選択し、MAMPを起動
+　　1.5右上の「Start」を選択し、MAMPを起動
 
 2. mysql
 
-　2.1 下記コマンドでMAMPのbinディレクトリに移動する
+　　2.1 下記コマンドでMAMPのbinディレクトリに移動する
 
-　　cd /Applications/MAMP/Library/bin/
+　　　cd /Applications/MAMP/Library/bin/
+   
+ 2.2 以下のコマンドでMySQLに接続
 
-./mysql -u root -p
+　　./mysql -u root -p
+  
+ 2.3 パスワードが求められたら「root」と入力
 
-Enter password: rootと入力
+　　Enter password: rootと入力
 
 3. Composerインストール
 
