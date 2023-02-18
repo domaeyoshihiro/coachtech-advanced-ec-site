@@ -122,13 +122,13 @@ Docker version 20.10.22
  
 　　5.2 Docker起動
  　
-　　　パスワードを入力してDockerを起動
+　　　
+　　パスワードを入力してDockerを起動
 
 
 6. laravel sailインストール
 
-
-　　　
+　
 　　6.1 作成したプロジェクトへ移動
   
   　
