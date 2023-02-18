@@ -139,6 +139,14 @@ Docker version 20.10.22
   
 　　　php artisan sail:install
 
+　　6.4 Docker Desktop設定
+
+　　　設定→Resources→FileSharingで該当プロジェクトを追加
+
+　　6.5 docker-compose.ymlの設定
+
+　　　docker-compose.ymlのportsを8000:80に書き換え
+
 7. サーバー立ち上げ
 
 　　下記コマンドでサーバーを立ち上げる
