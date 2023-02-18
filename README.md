@@ -85,9 +85,9 @@ Docker version 20.10.22
 
 　　　cd /Applications/MAMP/Library/bin/
    
- 2.2 以下のコマンドでMySQLに接続
+   2.2 以下のコマンドでMySQLに接続
 
-　　./mysql -u root -p
+　　  ./mysql -u root -p
   
  2.3 パスワードが求められたら「root」と入力
 
