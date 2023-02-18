@@ -135,7 +135,7 @@ Docker version 20.10.22
 
 　　　composer require laravel/sail --dev
   
-　　6.3 以下のコマンドでLaravelプロジェクトにSail環境を準備
+　　6.3 以下のコマンドでLaravelプロジェクトにSail環境を準備(mysqlを選択)
   
 　　　php artisan sail:install
 
