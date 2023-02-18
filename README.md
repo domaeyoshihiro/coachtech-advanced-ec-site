@@ -113,7 +113,7 @@ Docker version 20.10.22
 
 　　　composer create-project "laravel/laravel=8.*" プロジェクト名 --prefer-dist
       
-5. Dockerインストール
+5. Docker Desktopをインストール
 
 　　5.1 Docker Desktopをインストール
 
