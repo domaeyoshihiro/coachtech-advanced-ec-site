@@ -95,7 +95,7 @@ Docker version 20.10.22
 
 3. Composerインストール
 
- 3.1 ターミナルを開き、Homebrewのインストール
+　　3.1 ターミナルを開き、Homebrewのインストール
 
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   
@@ -126,6 +126,7 @@ Docker version 20.10.22
 
 6. laravel sailインストール
 　　　
+   
   6.1 作成したプロジェクトへ移動
   　
    cd プロジェクト名
