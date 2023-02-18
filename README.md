@@ -95,7 +95,7 @@ Docker version 20.10.22
 
 3. Composerインストール
 
-　　3.1 ターミナルを開き、Homebrewのインストール
+　　3.1 ターミナルを開き、Homebrewのインストール（パスワードを入力）
 
 　　　/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   
