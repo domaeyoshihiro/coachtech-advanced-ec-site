@@ -118,6 +118,7 @@ Docker version 20.10.22
 　　5.1 Docker Desktopをインストール
 
 　　　Docker公式のホームページからインストール
+   
  
 　　5.2 Docker起動
  　
@@ -125,8 +126,11 @@ Docker version 20.10.22
 
 
 6. laravel sailインストール
+
+
 　　　
 　　6.1 作成したプロジェクトへ移動
+  
   　
 　　　cd プロジェクト名
   
