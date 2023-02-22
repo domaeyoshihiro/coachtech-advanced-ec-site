@@ -1,0 +1,46 @@
+version: 2.1
+orbs: circleci/php@1.1.2
+
+jobs:
+  build:
+    docker:
+      - image: circleci/php:8.1
+    working_directory: ~/coachtech-advanced-ec-site
+    steps:
+      - checkout:
+        path: ~/coachtech-advanced-ec-site
+      - php/install-deps
+
+  test:
+    docker:
+      - image: circleci/php:8.1
+      - image: circleci/mysql:5.7
+        environment:
+          MYSQL_ROOT_PASSWORD: password
+          MYSQL_DATABASE: testing
+          MYSQL_USER: sail
+    environment:
+      BUNDLE_JOBS: "3"
+      BUNDLE_RETRY: "3"
+      APP_DATABASE_HOST: "127.0.0.1"
+      APP_ENV: testing
+    working_directory: ~/coachtech-advanced-ec-site
+    steps:
+      - checkout:
+        path: ~/coachtech-advanced-ec-site
+      - php/install-deps
+      - run:
+        name: Database setup
+        command: sail artisan migrate
+      -run:
+        name: test
+        command: vendor/bin/phpunit
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - test:
+        requires:
+          - build
