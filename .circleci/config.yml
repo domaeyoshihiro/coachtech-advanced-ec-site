@@ -1,5 +1,6 @@
 version: 2.1
-orbs: circleci/php@1.1.2
+orbs:
+  circleci/php@1.1.2
 
 jobs:
   build:
@@ -8,7 +9,7 @@ jobs:
     working_directory: ~/coachtech-advanced-ec-site
     steps:
       - checkout:
-        path: ~/coachtech-advanced-ec-site
+          path: ~/coachtech-advanced-ec-site
       - php/install-deps
 
   test:
@@ -27,14 +28,14 @@ jobs:
     working_directory: ~/coachtech-advanced-ec-site
     steps:
       - checkout:
-        path: ~/coachtech-advanced-ec-site
+          path: ~/coachtech-advanced-ec-site
       - php/install-deps
       - run:
-        name: Database setup
-        command: sail artisan migrate
-      -run:
-        name: test
-        command: vendor/bin/phpunit
+          name: Database setup
+          command: sail artisan migrate
+      - run:
+          name: test
+          command: vendor/bin/phpunit
 
 workflows:
   version: 2
@@ -42,5 +43,5 @@ workflows:
     jobs:
       - build
       - test:
-        requires:
-          - build
+          requires:
+            - build
