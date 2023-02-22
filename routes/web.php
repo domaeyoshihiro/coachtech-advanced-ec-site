@@ -12,7 +12,8 @@ Route::get('/', [ShopController::class, 'index']);
 Route::get('/thanks', function () {
         return view('/thanks');
     })->middleware(['verified']);
-Route::group(['middleware' => ['auth', 'can:general']], function () {
+Route::get('/reservation/qrcode', [ReservationController::class, 'qrcode'])->name('qrcode');
+Route::group(['middleware' => ['auth','verified', 'can:general']], function () {
     Route::get('/search', [ShopController::class, 'search'])->name('search');
     Route::get('/detail/{id}', [ShopController::class, 'show']);
     Route::post('/reservation/add', [ReservationController::class, 'create'])->name('reservation.create');
@@ -31,7 +32,6 @@ Route::group(['middleware' => ['auth', 'can:general']], function () {
         return view('/complete');
     });
     Route::get('/reservation/detail/{id}', [ReservationController::class, 'show']);
-    Route::get('/reservation/qrcode', [ReservationController::class, 'qrcode'])->name('qrcode');
     Route::get('/reservation/settlement',[ReservationController::class, 'settlement'])->name('settlement');
 });
 

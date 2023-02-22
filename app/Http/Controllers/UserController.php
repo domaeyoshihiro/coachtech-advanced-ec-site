@@ -41,7 +41,6 @@ class UserController extends Controller
   }
   public function sendMail(NotificationMailRequest $request)
   {
-    
     $users = User::where('role', 3)->get();
     foreach($users as $user) {
       $name = $user->name;
