@@ -1,24 +1,24 @@
 version: 2.1
 
-orbs:
-  php: circleci/php@1.1.0
-
 jobs:
   build:
     docker:
       - image: circleci/php:8.1
     working_directory: ~/coachtech-advanced-ec-site
-
     steps:
       - checkout:
           path: ~/coachtech-advanced-ec-site
-      - php/install-deps
       - run:
-          name: Laravel application build
-          command: php artisan build
+          name: Install PHP dependencies
+          command: |
+            sudo apt-get update && sudo apt-get install -y libpq-dev unzip
+            composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
       - run:
-          name: Laravel application tests
-          command: vendor/bin/phpunit
+          name: Install Node.js dependencies
+          command: |
+            curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+            sudo apt-get install -y nodejs
+            npm install
 
 workflows:
   version: 2
