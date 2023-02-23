@@ -20,11 +20,36 @@ jobs:
             sudo apt-get install -y nodejs
             npm install
 
+  test:
+    docker:
+      - image: cimg/php:8.1
+    working_directory: ~/coachtech-advanced-ec-site
+    steps:
+      - checkout:
+          path: ~/coachtech-advanced-ec-site
+      - run:
+          name: Install PHP dependencies
+          command: |
+            sudo apt-get update && sudo apt-get install -y libpq-dev unzip
+            composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
+      - run:
+          name: Install Node.js dependencies
+          command: |
+            curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+            sudo apt-get install -y nodejs
+            npm install
+      - run:
+          name: Run tests
+          command: vendor/bin/phpunit
+
 workflows:
   version: 2
   build_and_test:
     jobs:
       - build
+      - test:
+          requires:
+            - build
 
 
 
