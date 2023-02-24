@@ -87,7 +87,7 @@ Docker version 20.10.22
    
 　　2.2 以下のコマンドでMySQLに接続
 
-　　　　./mysql -u root -p
+　　　　`./mysql -u root -p`
   
 　　2.3 パスワードが求められたら「root」と入力
 
@@ -97,21 +97,21 @@ Docker version 20.10.22
 
 　　3.1 ターミナルを開き、Homebrewのインストール（パスワードを入力）
 
-　　　/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+　　　`/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
   
 　　3.2 Composerをインストール
 
-　　　brew install composer
+　　　`brew install composer`
 
 4. Laravelプロジェクト作成
 
 　　4.1 MAMPを起動してCLIでhtdocsまで移動
 
-　　　cd /Applications/MAMP/htdocs/
+　　　`cd /Applications/MAMP/htdocs/`
    
 　　4.2 Laravelのプロジェクトを下記コマンドで作成
 
-　　　composer create-project "laravel/laravel=8.*" プロジェクト名 --prefer-dist
+　　　`composer create-project "laravel/laravel=8.*" プロジェクト名 --prefer-dist`
       
 5. Docker Desktopをインストール
 
@@ -133,11 +133,11 @@ Docker version 20.10.22
   
 　　6.2 以下のコマンドでSailをインストール
 
-　　　composer require laravel/sail --dev
+　　　`composer require laravel/sail --dev`
   
 　　6.3 以下のコマンドでLaravelプロジェクトにSail環境を準備(mysqlを選択)
   
-　　　php artisan sail:install
+　　　`php artisan sail:install`
 
 　　6.4 Docker Desktop設定
 
@@ -153,5 +153,5 @@ Docker version 20.10.22
 
 　　下記コマンドでサーバーを立ち上げる
  
-　　　./vendor/bin/sail up
+　　　`./vendor/bin/sail up`
 
