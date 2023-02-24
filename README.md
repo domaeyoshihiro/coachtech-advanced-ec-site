@@ -83,10 +83,7 @@ Docker version 20.10.22
 
 　　2.1 下記コマンドでMAMPのbinディレクトリに移動する
 
-　　　```php
-<?php
-echo　"aaa";
-　　　cd /Applications/MAMP/Library/bin/
+　　　`cd /Applications/MAMP/Library/bin/`
    
 　　2.2 以下のコマンドでMySQLに接続
 
