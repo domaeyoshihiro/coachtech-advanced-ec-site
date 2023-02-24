@@ -4,10 +4,12 @@ jobs:
   build:
     docker:
       - image: cimg/php:8.1
+        environment:
+          APP_ENV: testing
       - image: circleci/mysql:8.0
         environment:
-          MYSQL_ROOT_PASSWORD: root_password
-          MYSQL_DATABASE: test_db
+          MYSQL_ROOT_PASSWORD: password
+          MYSQL_DATABASE: testing
     working_directory: ~/coachtech-advanced-ec-site
     steps:
       - checkout:
@@ -27,10 +29,12 @@ jobs:
   test:
     docker:
       - image: cimg/php:8.1
+        environment:
+          APP_ENV: testing
       - image: circleci/mysql:8.0
         environment:
-          MYSQL_ROOT_PASSWORD: root_password
-          MYSQL_DATABASE: test_db
+          MYSQL_ROOT_PASSWORD: password
+          MYSQL_DATABASE: testing
     working_directory: ~/coachtech-advanced-ec-site
     steps:
       - checkout:
@@ -58,8 +62,6 @@ workflows:
       - test:
           requires:
             - build
-
-
 
 
 
