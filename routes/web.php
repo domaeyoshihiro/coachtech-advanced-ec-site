@@ -13,17 +13,17 @@ Route::get('/thanks', function () {
         return view('/thanks');
     })->middleware(['verified']);
 Route::get('/reservation/qrcode', [ReservationController::class, 'qrcode'])->name('qrcode');
-Route::group(['middleware' => ['auth','verified', 'can:general']], function () {
+Route::group(['middleware' => ['auth','can:general']], function () {
     Route::get('/search', [ShopController::class, 'search'])->name('search');
     Route::get('/detail/{id}', [ShopController::class, 'show']);
-    Route::post('/reservation/add', [ReservationController::class, 'create'])->name('reservation.create');
-    Route::post('/edit/{id}', [ReservationController::class, 'update']);
-    Route::post('/reservation/delete/{id}', [ReservationController::class, 'delete']);
+    Route::post('/reservation/add', [ReservationController::class, 'create'])->name('reservation.create')->middleware(['verified']);
+    Route::post('/edit/{id}', [ReservationController::class, 'update'])->middleware(['verified']);
+    Route::post('/reservation/delete/{id}', [ReservationController::class, 'delete'])->middleware(['verified']);
     Route::get('/done', function () {
         return view('/done');
     });
-    Route::post('/like/add/{id}', [LikeController::class, 'create']);
-    Route::post('/like/delete/{id}', [LikeController::class, 'delete']);
+    Route::post('/like/add/{id}', [LikeController::class, 'create'])->middleware(['verified']);
+    Route::post('/like/delete/{id}', [LikeController::class, 'delete'])->middleware(['verified']);
     Route::get('/mypage/{id}', [UserController::class, 'mypage'])->middleware(['verified']);
     Route::get('/review/list/{id}', [ReviewController::class, 'index']);
     Route::get('/review/{id}', [ReviewController::class, 'show'])->middleware(['verified']);
@@ -31,8 +31,8 @@ Route::group(['middleware' => ['auth','verified', 'can:general']], function () {
     Route::get('/complete', function () {
         return view('/complete');
     });
-    Route::get('/reservation/detail/{id}', [ReservationController::class, 'show']);
-    Route::get('/reservation/settlement',[ReservationController::class, 'settlement'])->name('settlement');
+    Route::get('/reservation/detail/{id}', [ReservationController::class, 'show'])->middleware(['verified']);
+    Route::get('/reservation/settlement',[ReservationController::class, 'settlement'])->name('settlement')->middleware(['verified']);
 });
 
 Route::group(['middleware' => ['auth', 'can:admin']], function () {
