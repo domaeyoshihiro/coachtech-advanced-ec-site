@@ -155,3 +155,8 @@ Docker version 20.10.22
  
 　　　`./vendor/bin/sail up`
 
+## テストユーザー
+
+　　　name:admin password:adminpass role:3
+
+　　　テストでは上記roleを店舗代表者は2、一般ユーザーは3に変更してテスト実行
