@@ -14,7 +14,11 @@
       <p class="shop__name">{{ $shops->shopname }}</p>
     </div>
     <div>
-      <img src="{{ \Storage::url($shops->image) }}" class="shop__img">
+      @if(config('app.env') === 'production')
+        <img src="{{ $shops['image'] }}" class="shop__img">
+      @else
+        <img src="{{ \Storage::url($shops->image) }}" class="shop__img">
+      @endif
     </div>
     <div class="tag">
       <p class="shop__area--tag">#{{ $shops->area->area }}</p>
@@ -39,19 +43,19 @@
         <th class="review__th">評価(5段階)</th>
         <td class="review__td">
           @if ($review->star == 1)
-            <img src="{{ asset('img/star1.png') }}" class="star__img">
+            <img src="{{ asset('img/star1.svg') }}" class="star__img">
           @endif
           @if ($review->star == 2)
-            <img src="{{ asset('img/star2.png') }}" class="star__img">
+            <img src="{{ asset('img/star2.svg') }}" class="star__img">
           @endif
           @if ($review->star == 3)
-            <img src="{{ asset('img/star3.png') }}" class="star__img">
+            <img src="{{ asset('img/star3.svg') }}" class="star__img">
           @endif
           @if ($review->star == 4)
-            <img src="{{ asset('img/star4.png') }}" class="star__img">
+            <img src="{{ asset('img/star4.svg') }}" class="star__img">
           @endif
           @if ($review->star == 5)
-            <img src="{{ asset('img/star5.png') }}" class="star__img">
+            <img src="{{ asset('img/star5.svg') }}" class="star__img">
           @endif
         </td>
       </tr>

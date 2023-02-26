@@ -12,8 +12,6 @@ class LikeController extends Controller
 {
     public function create(LikeRequest $request)
     {
-        $user = Auth::user();
-        $shops = Shop::with('area', 'genre','likes')->get();
         $likes = [
             'shop_id' => $request->id,
             'user_id' => $request->user_id,

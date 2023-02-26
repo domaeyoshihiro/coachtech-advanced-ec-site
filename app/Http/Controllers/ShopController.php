@@ -17,7 +17,7 @@ class ShopController extends Controller
         $user = Auth::user();
         $shops = Shop::with('area', 'genre','likes')->get();
         if(is_null($user) || $user->role == 3) {
-            return view('index', ['shops' => $shops, 'user' => $user]);
+            return view('shop', ['shops' => $shops, 'user' => $user]);
         }
         if($user->role == 1) {
             return view('admin/admin_management');

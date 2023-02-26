@@ -26,16 +26,16 @@ class ShopRequest extends FormRequest
         return [
             'shopname.required' => 'ショップ名を入力してください',
             'shopname.string' => 'ショップ名は文字列で入力してください',
-            'shopname.max:191' => 'ショップ名は191文字以下で入力してください',
+            'shopname.max' => 'ショップ名は191文字以下で入力してください',
             'image.required' => '画像を追加してください',
-            'image.max:1024' => '画像容量が大きいです',
+            'image.max' => '画像容量が大きいです',
             'image.mimes' => '画像はjpg、jpeg、png形式で追加してください',
             'detail.required' => '詳細を入力してください',
             'detail.string' => '詳細は文字列で入力してください',
-            'detail.max:191' => '詳細は191文字以下で入力してください',
+            'detail.max' => '詳細は191文字以下で入力してください',
             'area_id.required' => 'エリアを入力してください',
             'genre_id.required' => 'ジャンルしてください',
-            'user_id.unique' => '1つ以上お店は追加できません',
+            'user_id.unique' => 'このユーザーは既にショップを持っています',
         ];
     }
 }

@@ -26,8 +26,13 @@ class RepresentativeController extends Controller
     }
     public function create(ShopRequest $request) 
     {   
-        $image_name = $request->file('image')->getClientOriginalName();
-        $image = Storage::putFileAs('public/img',$request->file('image'), $image_name);
+        if (config('filesystems.default') === 's3') {
+            $upload_info = Storage::disk('s3')->putFile('/', $request->file('image'), 'public');
+            $image = Storage::disk('s3')->url($upload_info);
+        } else {
+            $image_name = $request->file('image')->getClientOriginalName();
+            $image = Storage::putFileAs('public/img',$request->file('image'), $image_name);
+        }
         $param = [
             'shopname' => $request->shopname,
             'detail' => $request->detail,
@@ -45,9 +50,16 @@ class RepresentativeController extends Controller
         $shop = Shop::where('id', $request->shop_id)->first();
         $path = $shop->image;
         if (!is_null($image)) {
-            Storage::delete($path); 
-            $image_name = $request->file('image')->getClientOriginalName();
-            $path = Storage::putFileAs('public/img', $image, $image_name);
+            if (config('filesystems.default') === 's3') {
+                $path = str_replace('https://ecsitebascket.s3.ap-northeast-1.amazonaws.com/','',$path);
+                Storage::disk('s3')->delete($path);
+                $upload_info = Storage::disk('s3')->putFile('', $image, 'public');
+                $path = Storage::disk('s3')->url($upload_info);
+            } else {
+                Storage::delete($path); 
+                $image_name = $request->file('image')->getClientOriginalName();
+                $path = Storage::putFileAs('public/img', $image, $image_name);
+            }
         }
         $param = [
             'shopname' => $request->shopname,

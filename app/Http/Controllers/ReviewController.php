@@ -33,13 +33,19 @@ class ReviewController extends Controller
     }
     public function create(ReviewRequest $request) 
     {
-        $param = [
-            'comment' => $request->comment,
-            'star' => $request->star,
-            'user_id' => $request->user_id,
-            'shop_id' => $request->shop_id,
-        ];
-        Review::create($param);
-        return redirect('/complete');
+        $reviews = Review::with('shop', 'user')->where("shop_id", $request->shop_id)->get()->toArray();
+        $userIds = array_column($reviews, 'user_id');
+        if(in_array($request->user_id,$userIds)) {
+            return back()->with('message', '1店舗に1回しか評価できません');
+        } else {
+            $param = [
+                'comment' => $request->comment,
+                'star' => $request->star,
+                'user_id' => $request->user_id,
+                'shop_id' => $request->shop_id,
+            ];
+            Review::create($param);
+            return redirect('/complete');
+        }
     }
 }

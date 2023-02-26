@@ -27,6 +27,7 @@
         <p class="error">{{$error}}</>
       @endforeach
     @endif
+    <p class="error">{{ session('message') }}</p>
     <form action="{{ route('review.create') }}" method="POST" class="review__form">
       @csrf
       <input type="hidden" name="shop_id" value="{{ $shops->id  }}">
