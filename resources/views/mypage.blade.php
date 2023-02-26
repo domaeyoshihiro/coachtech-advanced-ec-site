@@ -91,7 +91,11 @@
       @foreach ($likes as $like)
       <div class="shop__container">
         <div>
-          <img src="{{ \Storage::url($like->shop->image) }}" class="shop__img">
+          @if(config('app.env') === 'production')
+            <img src=" {{ $like->shop['image'] }}" class="shop__img">
+          @else
+            <img src="{{ \Storage::url($like->shop->image) }}" class="shop__img">
+          @endif
         </div>
         <div class="shop__content">
           <div class="shop__name">{{ $like->shop->shopname }}</div>
@@ -109,7 +113,7 @@
               @if (Auth::check())
                 <input type="hidden" name="user_id" value="{{ $user->id  }}">
               @endif
-              <input type="image" src="{{ asset('img/heart2.png') }}" class="shop__like--img">
+              <input type="image" src="{{ asset('img/heart2.svg') }}" class="shop__like--img">
             </form>
           </div>
         </div>

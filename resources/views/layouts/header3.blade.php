@@ -34,7 +34,7 @@
           <option value="4">イタリアン</option>
           <option value="5">ラーメン</option>
         </select>
-        <input type="image" name="submit" src="{{ asset('img/search.png') }}" class="header__search__btn">
+        <input type="image" name="submit" src="{{ asset('img/search.svg') }}" class="header__search__btn">
         <input type="text" name="shopname" placeholder="Search ..." class="header__search--shopname">
       </form>
     </div>
@@ -172,7 +172,7 @@ target.addEventListener('click', () => {
   padding-right: 20px;
   -webkit-appearance: none;
   appearance: none;
-  background-image: url({{ asset('img/arrow.png') }});
+  background-image: url({{ asset('img/arrow.svg') }});
   background-position: right 0 center;
   background-repeat: no-repeat;
   background-size: 20px 20px;
@@ -185,7 +185,7 @@ target.addEventListener('click', () => {
   padding: 5px 15px 5px 5px;
   -webkit-appearance: none;
   appearance: none;
-  background-image: url({{ asset('img/arrow.png') }});
+  background-image: url({{ asset('img/arrow.svg') }});
   background-position: right 0 center;
   background-repeat: no-repeat;
   background-size: 20px 20px;

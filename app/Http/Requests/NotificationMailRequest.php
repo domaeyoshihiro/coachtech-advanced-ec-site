@@ -23,13 +23,13 @@ class NotificationMailRequest extends FormRequest
         return [
             'subject.required' => '件名を入力してください',
             'subject.string' => '件名は文字列入力してください',
-            'subject.max:30' => '件名は30文字以下で入力してください',
+            'subject.max' => '件名は30文字以下で入力してください',
             'title.required' => 'お知らせタイトルを入力してください',
             'title.string' => 'お知らせタイトルは文字列入力してください',
-            'title.max:30' => 'お知らせタイトルは30文字以下で入力してください',
+            'title.max' => 'お知らせタイトルは30文字以下で入力してください',
             'detail.required' => 'お知らせ内容を入力してください',
             'detail.string' => 'お知らせ内容は文字列入力してください',
-            'detail.max:191' => 'お知らせ内容は191文字以下で入力してください',
+            'detail.max' => 'お知らせ内容は191文字以下で入力してください',
         ];
     }
 }

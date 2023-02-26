@@ -3,6 +3,9 @@
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\Request;
 
+require __DIR__.'/../vendor/autoload.php';
+(new Dotenv\Dotenv(__DIR__.'/../', '.env.production'))->load();
+
 define('LARAVEL_START', microtime(true));
 
 /*

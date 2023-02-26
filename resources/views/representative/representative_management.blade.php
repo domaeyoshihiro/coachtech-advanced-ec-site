@@ -16,7 +16,11 @@
     </div>
     <h2 class="shop__detail__titele">ショップ詳細</h2>
     <div>
-      <img src="{{ \Storage::url($shop->image) }}" class="shop__img">
+      @if(config('app.env') === 'production')
+        <img src="{{ $shop['image'] }}" class="shop__img">
+      @else
+        <img src="{{ \Storage::url($shop->image) }}" class="shop__img">
+      @endif
     </div>
     <div class="tag">
       <p class="shop__area--tag">#{{ $shop->area->area }}</p>

@@ -16,7 +16,11 @@
   @foreach ($shops as $shop)
   <div class="shop__container">
     <div>
-      <img src="{{ \Storage::url($shop->image) }}" class="shop__img">
+      @if(config('app.env') === 'production')
+        <img src="{{ $shop['image'] }}" class="shop__img">
+      @else
+        <img src="{{ \Storage::url($shop->image) }}" class="shop__img">
+      @endif
     </div>
     <div class="shop__content">
       <div class="shop__name">{{ $shop->shopname }}</div>
@@ -30,20 +34,20 @@
           <button class="shop__btn">詳しくみる</button>
         </form>
         @if ($shop->is_liked_by_auth_user())
-        <form action="/like/delete/{{ $shop->id }}" method="POST" class="">
+        <form action="/like/delete/{{ $shop->id }}" method="POST">
           @csrf
           @if (Auth::check())
             <input type="hidden" name="user_id" value="{{ $user->id  }}">
           @endif
-          <input type="image" src="{{ asset('img/heart2.png') }}" class="shop__like--img">
+          <input type="image" src="{{ asset('img/heart2.svg') }}" class="shop__like--img">
         </form>
         @else
-        <form action="/like/add/{{ $shop->id }}" method="POST" class="">
+        <form action="/like/add/{{ $shop->id }}" method="POST">
           @csrf
           @if (Auth::check())
             <input type="hidden" name="user_id" value="{{ $user->id  }}">
           @endif
-          <input type="image" src="{{ asset('img/heart.png') }}" class="shop__like--img">
+          <input type="image" src="{{ asset('img/heart.svg') }}" class="shop__like--img">
         </form>
         @endif
       </div>

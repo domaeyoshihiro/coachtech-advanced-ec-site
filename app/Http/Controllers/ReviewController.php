@@ -33,8 +33,9 @@ class ReviewController extends Controller
     }
     public function create(ReviewRequest $request) 
     {
-        $reviews = Review::with('shop', 'user')->where("shop_id", $request->shop_id)->get();
-        if(in_array($request->user_id,$reviews)) {
+        $reviews = Review::with('shop', 'user')->where("shop_id", $request->shop_id)->get()->toArray();
+        $userIds = array_column($reviews, 'user_id');
+        if(in_array($request->user_id,$userIds)) {
             return back()->with('message', '1店舗に1回しか評価できません');
         } else {
             $param = [

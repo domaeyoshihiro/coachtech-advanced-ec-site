@@ -13,14 +13,14 @@
                     @if ($errors->has('name'))
                         <p class="error">{{$errors->first('name')}}</p>
                     @endif
-                    <img class="register__name--img" src="{{ asset('img/user.png') }}">
+                    <img class="register__name--img" src="{{ asset('img/user.svg') }}">
                     <x-input id="name" class="register__name--input" type="text" name="name" :value="old('name')" placeholder="Username" />
                 </div>
                 <div class="register__email">
                     @if ($errors->has('email'))
                         <p class="error">{{$errors->first('email')}}</p>
                     @endif
-                    <img class="register__email--img" src="{{ asset('img/email.png') }}">
+                    <img class="register__email--img" src="{{ asset('img/email.svg') }}">
                     <x-input id="email" class="register__email--input" type="email" name="email" :value="old('email')" placeholder="Email" />
                 </div>
                 <div class="register__password">

@@ -23,7 +23,7 @@ class ReviewRequest extends FormRequest
         return [
             'comment.required' => 'コメントを入力してください',
             'comment.string' => 'コメントは文字列で入力してください',
-            'comment.max:191' => 'コメントは191文字以下で入力してください',
+            'comment.max' => 'コメントは191文字以下で入力してください',
             'star.required' => '評価を入力してください',
             'user_id.required' => 'ログインしてください',
         ];

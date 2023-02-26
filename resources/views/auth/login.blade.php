@@ -14,7 +14,7 @@
                 @if ($errors->has('email'))
                     <p class="error">{{$errors->first('email')}}</p>
                 @endif
-                <img class="login__email--img" src="{{ asset('img/email.png') }}">
+                <img class="login__email--img" src="{{ asset('img/email.svg') }}">
                 <x-input id="email" class="login__email--input" type="email" name="email" :value="old('email')" placeholder="Email" />
             </div>
             <div class="login__password">
