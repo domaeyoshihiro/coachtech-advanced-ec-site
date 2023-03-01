@@ -13,6 +13,7 @@ use App\Http\Requests\ShopRequest;
 use App\Http\Requests\ShopUpdateRequest;
 use App\Http\Requests\CourseRequest;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\App;
 
 class RepresentativeController extends Controller
 {
@@ -26,7 +27,7 @@ class RepresentativeController extends Controller
     }
     public function create(ShopRequest $request) 
     {   
-        if (config('filesystems.default') === 's3') {
+        if (App::environment('production')) {
             $upload_info = Storage::disk('s3')->putFile('/', $request->file('image'), 'public');
             $image = Storage::disk('s3')->url($upload_info);
         } else {
@@ -50,8 +51,8 @@ class RepresentativeController extends Controller
         $shop = Shop::where('id', $request->shop_id)->first();
         $path = $shop->image;
         if (!is_null($image)) {
-            if (config('filesystems.default') === 's3') {
-                $path = str_replace('https://ecsitebascket.s3.ap-northeast-1.amazonaws.com/','',$path);
+            if (App::environment('production')) {
+                $path = str_replace('https://ecsitebucket.s3.ap-northeast-1.amazonaws.com/','',$path);
                 Storage::disk('s3')->delete($path);
                 $upload_info = Storage::disk('s3')->putFile('', $image, 'public');
                 $path = Storage::disk('s3')->url($upload_info);
