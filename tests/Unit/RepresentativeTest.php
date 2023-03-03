@@ -35,7 +35,7 @@ class RepresentativeTest extends TestCase
         $file = new UploadedFile(storage_path('app/public/test_img/about.jpg'), 'about.jpg', null, null, true);
         $data = [
             "user_id" => $this->user->id,
-            "shopname" => "shop",
+            "shop_name" => "shop",
             "detail" => "detail",
             "area_id" => $this->area->id,
             "genre_id" => $this->genre->id,
@@ -45,7 +45,7 @@ class RepresentativeTest extends TestCase
         $response = $this->actingAs($this->user)->from('representative/management')->post(route('shop.create'), $data);
         $response->assertRedirect('/representative/management');
         $this->assertDatabaseHas('shops', [
-            'shopname' => 'shop',
+            'shop_name' => 'shop',
             'detail' => 'detail'
         ]);
     }

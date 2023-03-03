@@ -24,7 +24,7 @@
       @endif
       <tr class="shop__add__tr">
         <th class="shop__add__th">ショップ名</th>
-        <td class="shop__add__td"><input type="text" name="shopname" class="shop__shopname--input"></td>
+        <td class="shop__add__td"><input type="text" name="shop_name" class="shop__shopname--input"></td>
       </tr>
       <tr class="shop__add__tr">
         <th class="shop__add__th--detail">詳細</th>

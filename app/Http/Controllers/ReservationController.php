@@ -35,7 +35,7 @@ class ReservationController extends Controller
         $carbon->setMinute($t[1]);
         $datetime = $carbon->format('Y-m-d H:i');
         $param = [
-            'reservationtime' => $datetime,
+            'reservation_time' => $datetime,
             'number' => $request->number,
             'user_id' => $request->user_id,
             'shop_id' => $request->shop_id,
@@ -54,7 +54,7 @@ class ReservationController extends Controller
         $carbon->setMinute($t[1]);
         $datetime = $carbon->format('Y-m-d H:i');
         $param = [
-            'reservationtime' => $datetime,
+            'reservation_time' => $datetime,
             'number' => $request->number,
             'user_id' => $request->user_id,
             'shop_id' => $request->shop_id,
@@ -77,12 +77,12 @@ class ReservationController extends Controller
     }
     public function qrcode(Request $request)
     {
-        $shopname = $request->shopname;
+        $shop_name = $request->shop_name;
         $name = $request->name;
         $email = $request->email;
         $number = $request->number;
         $reservationdt = $request->reservationdt;
-        return view('qrcode', ['shopname' => $shopname, 'name' => $name, 'email' => $email, 'number' => $number, 'reservationdt' => $reservationdt]);
+        return view('qrcode', ['shop_name' => $shop_name, 'name' => $name, 'email' => $email, 'number' => $number, 'reservationdt' => $reservationdt]);
     }
     public function settlement (ReservationRequest $request) 
     {

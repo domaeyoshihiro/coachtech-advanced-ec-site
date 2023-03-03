@@ -10,7 +10,7 @@ class ShopFactory extends Factory
     {
         return [
             'id' => 1,
-            'shopname' => 'test',
+            'shop_name' => 'test',
             'image' => 'public/img/sushi.jpg',
             'detail' => 'testdetail',
             'area_id' => '1',

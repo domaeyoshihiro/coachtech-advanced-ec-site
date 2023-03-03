@@ -11,7 +11,7 @@
   <div class="shop__container">
     <div>
       <button class="back__btn" onclick="location.href='/'"><</button>
-      <p class="shop__name">{{ $shops->shopname }}</p>
+      <p class="shop__name">{{ $shops->shop_name }}</p>
     </div>
     <div>
       @if(config('app.env') === 'production')
@@ -63,7 +63,7 @@
         @foreach ($courses as $course)
         <div class="course__container__list">
           <input type="checkbox" name="course_id" value="{{ $course->id }}" onclick="chbx(this)"  class="reservation__coures--input" >
-          <label class="reservation__coures--label">{{ $course->coursename }}</label>
+          <label class="reservation__coures--label">{{ $course->course_name }}</label>
           <label class="reservation__coures--label">{{ $course->price }}円</label>
         </div>
         @endforeach
@@ -73,7 +73,7 @@
         <table class="reservation__table">
           <tr class="reservation__tr">
             <th class="reservation__th--first">Shop</th>
-            <td class="reservation__td">{{ $shops->shopname }}</td>
+            <td class="reservation__td">{{ $shops->shop_name }}</td>
           </tr>
           <tr class="reservation__tr">
             <th class="reservation__th">Date</th>

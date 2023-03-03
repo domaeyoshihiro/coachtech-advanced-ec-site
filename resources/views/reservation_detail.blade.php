@@ -9,15 +9,15 @@
     <table class="reservation__detail__table">
       <tr class="reservation__detail__tr">
         <th class="reservation__detail__th">店名</th>
-        <td class="reservation__detail__td">{{ $shop->shopname }}</td>
+        <td class="reservation__detail__td">{{ $shop->shop_name }}</td>
       </tr>
       <tr class="reservation__detail__tr">
         <th class="reservation__detail__th">予約日</th>
-        <td class="reservation__detail__td">{{ date('Y-m-d', strtotime($reservation->reservationtime)) }}</td>
+        <td class="reservation__detail__td">{{ date('Y-m-d', strtotime($reservation->reservation_time)) }}</td>
       </tr>
       <tr class="reservation__detail__tr">
         <th class="reservation__detail__th">予約時間</th>
-        <td class="reservation__detail__td">{{ date('H:i', strtotime($reservation->reservationtime)) }}</td>
+        <td class="reservation__detail__td">{{ date('H:i', strtotime($reservation->reservation_time)) }}</td>
       </tr>
       <tr class="reservation__detail__tr--last">
         <th class="reservation__detail__th">人数</th>
@@ -28,7 +28,7 @@
       <p class="reservation__detail__text">来店時に下のQRコードを店員に見せてください。</p>
       <div class="reservation__detail__flex2">
         <p class="reservation__detail__qr">
-          {!! QrCode::generate(url()->route('qrcode', ['shopname' => $shop->shopname, 'name' => $user->name, 'email' => $user->email, 'number' => $reservation->number,  'reservationdt' => date('Y/m/d H:i', strtotime($reservation->reservationtime)) ])) !!}
+          {!! QrCode::generate(url()->route('qrcode', ['shop_name' => $shop->shop_name, 'name' => $user->name, 'email' => $user->email, 'number' => $reservation->number,  'reservationdt' => date('Y/m/d H:i', strtotime($reservation->reservation_time)) ])) !!}
         </p>
       </div>
     </div>

@@ -37,7 +37,7 @@ class GeneralReservationTest extends TestCase
         $response = $this->actingAs($this->user)->post(route('reservation.create'), $data);
         $response->assertRedirect('/done');
         $this->assertDatabaseHas('reservations', [
-            'reservationtime' => '2023-04-04 03:02:00',
+            'reservation_time' => '2023-04-04 03:02:00',
             'number' => '2'
         ]);
     }
@@ -53,7 +53,7 @@ class GeneralReservationTest extends TestCase
         ];
         $response = $this->actingAs($this->user)->post('/edit/' . $reservation->id, $data)->withHeaders(['Content-Type' => 'application/json; charset=utf-8']);
         $this->assertDatabaseHas('reservations',[
-            'reservationtime' => '2023-04-23 05:33:00',
+            'reservation_time' => '2023-04-23 05:33:00',
             'number' => '4人'
         ]);
     }

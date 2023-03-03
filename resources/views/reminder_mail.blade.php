@@ -3,7 +3,7 @@
   <table>
     <tr>
       <th class="mail__shopname__th">店名</th>
-      <td class="mail__shopname__td">{{ $shopname }}</td>
+      <td class="mail__shopname__td">{{ $shop_name }}</td>
     </tr>
     <tr>
       <th class="mail__number__th">人数</th>

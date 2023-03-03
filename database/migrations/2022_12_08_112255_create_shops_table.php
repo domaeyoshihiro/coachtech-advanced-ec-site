@@ -10,7 +10,7 @@ class CreateShopsTable extends Migration
     {
         Schema::create('shops', function (Blueprint $table) {
             $table->id();
-            $table->string('shopname');
+            $table->string('shop_name');
             $table->string('image');
             $table->string('detail');
             $table->unsignedBigInteger('area_id');

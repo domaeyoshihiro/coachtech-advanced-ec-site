@@ -22,7 +22,7 @@
             <label>Shop</label>
           </th>
           <td class="confirm__td">
-            {{ $shop->shopname }}
+            {{ $shop->shop_name }}
           </td>
         </tr>
         <tr class="confirm__tr">
@@ -58,7 +58,7 @@
           </th>
           @if(isset($course))
           <td class="confirm__td">
-            {{ $course->coursename }} {{ $course->price }}円
+            {{ $course->course_name }} {{ $course->price }}円
             <input name="price" value="{{ $course->price }}" type="hidden">
           </td>
           @else

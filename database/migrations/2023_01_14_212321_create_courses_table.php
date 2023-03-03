@@ -10,7 +10,7 @@ class CreateCoursesTable extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
-            $table->string('coursename');
+            $table->string('course_name');
             $table->bigInteger('price');
             $table->unsignedBigInteger('shop_id');
             $table->foreign('shop_id')->references('id')->on('shops')->cascadeOnDelete();

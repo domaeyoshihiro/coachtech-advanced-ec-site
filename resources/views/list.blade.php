@@ -11,7 +11,7 @@
   <div class="shop__container">
     <div>
       <button class="back__btn" onclick="location.href='/'"><</button>
-      <p class="shop__name">{{ $shops->shopname }}</p>
+      <p class="shop__name">{{ $shops->shop_name }}</p>
     </div>
     <div>
       @if(config('app.env') === 'production')

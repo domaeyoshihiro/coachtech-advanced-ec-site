@@ -12,7 +12,7 @@
   @if(!is_null($shop))
   <div class="shop__container">
     <div>
-      <p class="shop__name">{{ $shop->shopname }}</p>
+      <p class="shop__name">{{ $shop->shop_name }}</p>
     </div>
     <h2 class="shop__detail__titele">ショップ詳細</h2>
     <div>
@@ -46,7 +46,7 @@
         <tr class="shop__edit__tr">
           <th class="shop__edit__th--first">ショップ名</th>
           <td class="shop__edit__td--first">
-            <input type="text" name="shopname" value="{{ $shop->shopname }}" class="shop__shopname--input">
+            <input type="text" name="shop_name" value="{{ $shop->shop_name }}" class="shop__shopname--input">
           </td>
         </tr>
         <tr class="shop__edit__tr">
