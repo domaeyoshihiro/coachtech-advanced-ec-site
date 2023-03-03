@@ -23,7 +23,7 @@
       @endif
     </div>
     <div class="shop__content">
-      <div class="shop__name">{{ $shop->shopname }}</div>
+      <div class="shop__name">{{ $shop->shop_name }}</div>
       <div class="tag">
         <p class="shop__area--tag">#{{ $shop->area->area }}</p>
         <p class="shop__genre--tag">#{{ $shop->genre->genre }}</p>

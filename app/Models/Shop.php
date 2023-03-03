@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Shop extends Model
 {
     use HasFactory;
-    protected $fillable = ['shopname','image', 'detail', 'area_id', 'genre_id', 'user_id'];
+    protected $fillable = ['shop_name','image', 'detail', 'area_id', 'genre_id', 'user_id'];
 
     public function reservations(){
         return $this->hasMany('App\Models\Reservation');

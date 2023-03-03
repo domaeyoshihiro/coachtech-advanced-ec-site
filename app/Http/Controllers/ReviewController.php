@@ -20,10 +20,10 @@ class ReviewController extends Controller
     }
     public function show(Request $request, $id)
     {
-        $reservationtime = $request->reservationtime;
+        $reservation_time = $request->reservation_time;
         $dtnow = Carbon::now()->format("Y-m-d H:i:s");
         
-        if($dtnow > $reservationtime) {
+        if($dtnow > $reservation_time) {
             $user = Auth::user();
             $shops = Shop::with('area', 'genre')->find($id);
             return view('review', ['shops' => $shops, 'user' => $user]);

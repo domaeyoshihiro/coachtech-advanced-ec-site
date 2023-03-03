@@ -4,7 +4,7 @@
 <div class="qr__flex">
   <div class="qr__container">
     <h1 class="qr__title">お客様情報照合</h1>
-    <p class="qr__shopname">{{ $shopname }}</p>
+    <p class="qr__shopname">{{ $shop_name }}</p>
     <h2 class="qr__container__title">予約情報</h2>
     <table class="qr__table">
       <tr class="qr__tr">

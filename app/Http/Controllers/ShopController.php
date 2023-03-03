@@ -41,11 +41,11 @@ class ShopController extends Controller
     {
         $user = Auth::user();
         $query = Shop::query();
-        $shopname = $request->input('shopname');
+        $shop_name = $request->input('shop_name');
         $area_id = $request->input('area_id');
         $genre_id = $request->input('genre_id');
-        if (!empty($shopname)) {
-            $query -> where('shopname', 'LIKE', "%{$shopname}%");
+        if (!empty($shop_name)) {
+            $query -> where('shop_name', 'LIKE', "%{$shop_name}%");
         }
         if (!empty($area_id)) {
             $query -> where('area_id', $area_id);

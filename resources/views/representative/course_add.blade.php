@@ -12,7 +12,7 @@
   <div class="shop__container">
     <div>
       <button class="back__btn" onclick="location.href='/representative/management'"><</button>
-      <p class="shop__name">{{ $shops->shopname }}</p>
+      <p class="shop__name">{{ $shops->shop_name }}</p>
     </div>
     <div>
       @if(config('app.env') === 'production')
@@ -39,7 +39,7 @@
       <input type="hidden" name="shop_id" value="{{ $shops->id  }}">
       <div class="course__coursename">
         <label for="coursename" class="course__coursename--label">コース名 :</label>
-        <input type="text" name="coursename" id="coursename" class="course__coursename--input">
+        <input type="text" name="course_name" id="coursename" class="course__coursename--input">
       </div>
       <div class="course__price">
         <label for="price" class="course__price--label">金額 :</label>

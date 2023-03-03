@@ -39,18 +39,18 @@
           <table class="reservation__table">
             <tr class="reservation__tr">
               <th class="reservation__th--first">Shop</th>
-              <td class="reservation__td">{{ $reservation->shop->shopname }}</td>
+              <td class="reservation__td">{{ $reservation->shop->shop_name }}</td>
             </tr>
               <tr class="reservation__tr">
                 <th class="reservation__th">Date</th>
                 <td class="reservation__td">
-                  <input type="date" value="{{ date('Y-m-d', strtotime($reservation->reservationtime)) }}" name="date" class="reservation__date--input">
+                  <input type="date" value="{{ date('Y-m-d', strtotime($reservation->reservation_time)) }}" name="date" class="reservation__date--input">
                 </td>
               </tr>
               <tr class="reservation__tr">
                 <th class="reservation__th">Time</th>
                 <td class="reservation__td">
-                  <input type="time" value="{{ date('H:i', strtotime($reservation->reservationtime)) }}" name="time"  class="reservation__time--input"></td>
+                  <input type="time" value="{{ date('H:i', strtotime($reservation->reservation_time)) }}" name="time"  class="reservation__time--input"></td>
               </tr>
               <tr class="reservation__tr">
                 <th class="reservation__th">Number</th>
@@ -61,7 +61,7 @@
             @if(!is_null($reservation->course))
             <tr class="reservation__tr">
               <th class="reservation__th">Course</th>
-              <td class="reservation__td">{{ $reservation->course->coursename }}</td>
+              <td class="reservation__td">{{ $reservation->course->course_name }}</td>
             </tr>
             @endif
           </table>
@@ -77,7 +77,7 @@
         </form>
         <form action="/review/{{ $reservation->shop->id }}" method="GET">
           @csrf
-          <input type="hidden" name="reservationtime" value="{{ $reservation->reservationtime }}">
+          <input type="hidden" name="reservation_time" value="{{ $reservation->reservation_time }}">
           <button type="submit" class="review__btn">評価をする</button>
         </form>
       </div>
@@ -98,7 +98,7 @@
           @endif
         </div>
         <div class="shop__content">
-          <div class="shop__name">{{ $like->shop->shopname }}</div>
+          <div class="shop__name">{{ $like->shop->shop_name }}</div>
           <div class="tag">
             <p class="shop__area--tag">#{{ $like->shop->area->area }}</p>
             <p class="shop__genre--tag">#{{ $like->shop->genre->genre }}</p>

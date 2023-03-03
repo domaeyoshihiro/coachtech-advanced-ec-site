@@ -13,7 +13,7 @@ class ShopRequest extends FormRequest
     public function rules()
     {
         return [
-            'shopname' => ['required','string','max:191'],
+            'shop_name' => ['required','string','max:191'],
             'image' => ['required','max:1024','mimes:jpg,jpeg,png'],
             'detail' => ['required','string','max:191'],
             'area_id' => ['required'],
@@ -24,9 +24,9 @@ class ShopRequest extends FormRequest
     public function messages()
     {
         return [
-            'shopname.required' => 'ショップ名を入力してください',
-            'shopname.string' => 'ショップ名は文字列で入力してください',
-            'shopname.max' => 'ショップ名は191文字以下で入力してください',
+            'shop_name.required' => 'ショップ名を入力してください',
+            'shop_name.string' => 'ショップ名は文字列で入力してください',
+            'shop_name.max' => 'ショップ名は191文字以下で入力してください',
             'image.required' => '画像を追加してください',
             'image.max' => '画像容量が大きいです',
             'image.mimes' => '画像はjpg、jpeg、png形式で追加してください',

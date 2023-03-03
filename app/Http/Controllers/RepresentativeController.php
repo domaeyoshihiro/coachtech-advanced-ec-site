@@ -35,13 +35,14 @@ class RepresentativeController extends Controller
             $image = Storage::putFileAs('public/img',$request->file('image'), $image_name);
         }
         $param = [
-            'shopname' => $request->shopname,
+            'shop_name' => $request->shop_name,
             'detail' => $request->detail,
             'image' => $image,
             'area_id' => $request->area_id,
             'genre_id' => $request->genre_id,
             'user_id' => Auth::id(),
         ];
+
         Shop::create($param);
         return redirect('/representative/management');
     }
@@ -63,7 +64,7 @@ class RepresentativeController extends Controller
             }
         }
         $param = [
-            'shopname' => $request->shopname,
+            'shop_name' => $request->shop_name,
             'detail' => $request->detail,
             'image' => $path,
             'area_id' => $request->area_id,
@@ -83,7 +84,7 @@ class RepresentativeController extends Controller
     public function courseCreate(CourseRequest $request) 
     {
         $param = [
-            'coursename' => $request->coursename,
+            'course_name' => $request->course_name,
             'price' => $request->price,
             'shop_id' => $request->shop_id,
         ];
@@ -97,7 +98,6 @@ class RepresentativeController extends Controller
         $request->session()->regenerateToken();
         return redirect('/login');
     }
-
     public function reservationConfirmation($id)
     {
         $reservations = Reservation::where('shop_id', $id)->with('user', 'course')->get();

@@ -25,11 +25,11 @@
       @foreach($reservations as $reservation)
       <tr class="reservation__confirmation__tr2">
         <td class="reservation__confirmation__td">{{ $reservation->user->name }}様</td>
-        <td class="reservation__confirmation__td">{{ date('Y-m-d', strtotime($reservation->reservationtime)) }}</td>
-        <td class="reservation__confirmation__td">{{ date('H:i', strtotime($reservation->reservationtime)) }}</td>
+        <td class="reservation__confirmation__td">{{ date('Y-m-d', strtotime($reservation->reservation_time)) }}</td>
+        <td class="reservation__confirmation__td">{{ date('H:i', strtotime($reservation->reservation_time)) }}</td>
         <td class="reservation__confirmation__td">{{ $reservation->number }}</td>
         @if(!is_null($reservation->course))
-          <td class="reservation__confirmation__td">{{ $reservation->course->coursename }}</td>
+          <td class="reservation__confirmation__td">{{ $reservation->course->course_name }}</td>
         @else
           <td class="reservation__confirmation__td">コース選択なし</td>
         @endif

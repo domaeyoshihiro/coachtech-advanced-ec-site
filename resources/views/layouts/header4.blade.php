@@ -41,7 +41,7 @@
           <option value="5">ラーメン</option>
         </select>
         <input type="image" name="submit" src="{{ asset('img/search.svg') }}" class="header__search__btn">
-        <input type="text" name="shopname" placeholder="Search ..." class="header__search--shopname">
+        <input type="text" name="shop_name" placeholder="Search ..." class="header__search--shopname">
       </form>
     </div>
   </div>
