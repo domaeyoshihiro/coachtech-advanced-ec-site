@@ -53,7 +53,7 @@ class RepresentativeController extends Controller
         $path = $shop->image;
         if (!is_null($image)) {
             if (App::environment('production')) {
-                $path = str_replace('https://ecsitebucket.s3.ap-northeast-1.amazonaws.com/','',$path);
+                $path = str_replace('https://ecsite-production-bucket.s3.ap-northeast-1.amazonaws.com/','',$path);
                 Storage::disk('s3')->delete($path);
                 $upload_info = Storage::disk('s3')->putFile('', $image, 'public');
                 $path = Storage::disk('s3')->url($upload_info);
