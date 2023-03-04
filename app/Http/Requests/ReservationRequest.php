@@ -16,7 +16,7 @@ class ReservationRequest extends FormRequest
             'user_id' => ['required'],
             'date' => ['required','date','after:today'],
             'time' => ['required','date_format:H:i'],
-            'number' => ['required', 'regex:/^[1-9][0-9]*人$/'],
+            'number' => ['required','integer'],
         ];
     }
     public function messages()
@@ -29,6 +29,7 @@ class ReservationRequest extends FormRequest
             'time.required' => '時間を入力してください',
             'time.date' => '時間型で入力してください',
             'number.required' => '人数を入力してください',
+            'number.integer' => '人数の形式が違います',
         ];
     }
 }

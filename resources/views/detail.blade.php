@@ -50,7 +50,13 @@
         <input type="time" name="time" v-model="time" class="reservation__time--input">
       </div>
       <div>
-        <input type="text" name="number" value="1人" v-model="number" class="reservation__number--input">
+        <select name="number" v-model="number" class="reservation__number--input">
+          <option value="1">1人</option>
+          <option value="2">2人</option>
+          <option value="3">3人</option>
+          <option value="4">4人</option>
+          <option value="5">5人</option>
+        </select>
       </div>
       @if($courses->isNotEmpty())
       <div id="course-container">
@@ -85,7 +91,7 @@
           </tr>
           <tr class="reservation__tr">
             <th class="reservation__th--last">Number</th>
-            <td class="reservation__td">@{{ number }}</td>
+            <td class="reservation__td">@{{ number }}人</td>
           </tr>
         </table>
       </div>
@@ -100,7 +106,7 @@ el: '#shop',
   data: {
     date:'',
     time:'',
-    number:'1人',
+    number:'1',
   }
 });
 function chbx(obj) {
