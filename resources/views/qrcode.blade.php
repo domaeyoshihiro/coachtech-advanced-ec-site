@@ -13,7 +13,7 @@
       </tr>
       <tr class="qr__tr--last">
         <th class="qr__th">人数</th>
-        <td class="qr__td">{{ $number }}</td>
+        <td class="qr__td">{{ $number }}人</td>
       </tr>
     </table>
     <h2 class="qr__container__title">お客様情報</h2>

@@ -21,7 +21,7 @@
       </tr>
       <tr class="reservation__detail__tr--last">
         <th class="reservation__detail__th">人数</th>
-        <td class="reservation__detail__td">{{ $reservation->number }}</td>
+        <td class="reservation__detail__td">{{ $reservation->number }}人</td>
       </tr>
     </table>
     <div>

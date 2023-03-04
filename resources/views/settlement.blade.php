@@ -48,7 +48,7 @@
             <label>Number</label>
           </th>
           <td class="confirm__td">
-            {{ $inputs['number'] }}
+            {{ $inputs['number'] }}人
             <input name="number" value="{{ $inputs['number'] }}" type="hidden">
           </td>
         </tr>

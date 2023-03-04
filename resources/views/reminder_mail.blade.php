@@ -7,7 +7,7 @@
     </tr>
     <tr>
       <th class="mail__number__th">人数</th>
-      <td class="mail__number__td">{{ $number }}</td>
+      <td class="mail__number__td">{{ $number }}人</td>
     </tr>
     <tr>
       <th class="mail__reservationtime__th">予約日時</th>

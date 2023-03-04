@@ -55,7 +55,13 @@
               <tr class="reservation__tr">
                 <th class="reservation__th">Number</th>
                 <td class="reservation__td">
-                  <input type="text" name="number" value="{{ $reservation->number }}" class="reservation__number--input">
+                  <select name="number" class="reservation__number--input">
+                    <option value="1" {{ $reservation->number == '1' ? 'selected' : '' }}>1人</option>
+                    <option value="2" {{ $reservation->number == '2' ? 'selected' : '' }}>2人</option>
+                    <option value="3" {{ $reservation->number == '3' ? 'selected' : '' }}>3人</option>
+                    <option value="4" {{ $reservation->number == '4' ? 'selected' : '' }}>4人</option>
+                    <option value="5" {{ $reservation->number == '5' ? 'selected' : '' }}>5人</option>
+                  </select>
                 </td>
             </tr>
             @if(!is_null($reservation->course))

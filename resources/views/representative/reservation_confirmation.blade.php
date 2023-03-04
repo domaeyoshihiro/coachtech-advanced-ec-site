@@ -27,7 +27,7 @@
         <td class="reservation__confirmation__td">{{ $reservation->user->name }}様</td>
         <td class="reservation__confirmation__td">{{ date('Y-m-d', strtotime($reservation->reservation_time)) }}</td>
         <td class="reservation__confirmation__td">{{ date('H:i', strtotime($reservation->reservation_time)) }}</td>
-        <td class="reservation__confirmation__td">{{ $reservation->number }}</td>
+        <td class="reservation__confirmation__td">{{ $reservation->number }}人</td>
         @if(!is_null($reservation->course))
           <td class="reservation__confirmation__td">{{ $reservation->course->course_name }}</td>
         @else
