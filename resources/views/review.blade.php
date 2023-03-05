@@ -12,7 +12,11 @@
       <p class="shop__name">{{ $shops->shop_name }}</p>
     </div>
     <div>
-      <img src="{{ \Storage::url($shops->image) }}" class="shop__img">
+      @if(config('app.env') === 'production')
+        <img src="{{ $shops['image'] }}" class="shop__img">
+      @else
+        <img src="{{ \Storage::url($shops->image) }}" class="shop__img">
+      @endif
     </div>
     <div class="tag">
       <p class="shop__area--tag">#{{ $shops->area->area }}</p>
