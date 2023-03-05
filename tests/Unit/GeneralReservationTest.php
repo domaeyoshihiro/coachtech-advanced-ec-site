@@ -47,14 +47,14 @@ class GeneralReservationTest extends TestCase
         $data = [
             "date" => "2023-04-23",
             "time" => "05:33",
-            "number" => "4人",
+            "number" => "4",
             "shop_id" => $this->shop->id,
             "user_id" => $this->user->id,
         ];
-        $response = $this->actingAs($this->user)->post('/edit/' . $reservation->id, $data)->withHeaders(['Content-Type' => 'application/json; charset=utf-8']);
+        $response = $this->actingAs($this->user)->post('/edit/' . $reservation->id, $data);
         $this->assertDatabaseHas('reservations',[
             'reservation_time' => '2023-04-23 05:33:00',
-            'number' => '4人'
+            'number' => '4'
         ]);
     }
     public function test_reservation_destroy()
