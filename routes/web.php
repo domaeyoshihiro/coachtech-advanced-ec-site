@@ -12,10 +12,11 @@ Route::get('/', [ShopController::class, 'index']);
 Route::get('/thanks', function () {
         return view('/thanks');
     })->middleware(['verified']);
-Route::get('/reservation/qrcode', [ReservationController::class, 'qrcode'])->name('qrcode');
+Route::get('/reservation/qrcode', 
+[ReservationController::class, 'qrcode'])->name('qrcode');
+Route::get('/search', [ShopController::class, 'search'])->name('search');
+Route::get('/detail/{id}', [ShopController::class, 'show']);
 Route::group(['middleware' => ['auth','can:general']], function () {
-    Route::get('/search', [ShopController::class, 'search'])->name('search');
-    Route::get('/detail/{id}', [ShopController::class, 'show']);
     Route::post('/reservation/add', [ReservationController::class, 'create'])->name('reservation.create')->middleware(['verified']);
     Route::post('/edit/{id}', [ReservationController::class, 'update'])->middleware(['verified']);
     Route::post('/reservation/delete/{id}', [ReservationController::class, 'delete'])->middleware(['verified']);
